@@ -361,11 +361,15 @@ export default function Home() {
           </span>
         </h2>
 
+        {/* animate-fade-up-delay-4 animate-fade-up-delay-5 animate-fade-up-delay-6 animate-fade-up-delay-7 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {values.map((value, i) => (
+          {values.map((value, i) => {
+            const delays = ["animate-fade-up-delay-4", "animate-fade-up-delay-5", "animate-fade-up-delay-6", "animate-fade-up-delay-7"];
+            const delay = delays[Math.min(i, delays.length - 1)];
+            return (
             <div
               key={value.title}
-              className={`p-8 rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/50 card-hover backdrop-blur-sm animate-fade-up-delay-${Math.min(i + 4, 7)}`}
+              className={`p-8 rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/50 card-hover backdrop-blur-sm ${delay}`}
             >
               <div className="text-4xl mb-4">{value.emoji}</div>
               <h3 className="text-2xl font-bold mb-3 text-zinc-100">
@@ -380,7 +384,8 @@ export default function Home() {
                 </p>
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
