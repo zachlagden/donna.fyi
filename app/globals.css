@@ -108,3 +108,75 @@ body {
   background-color: rgba(124, 58, 237, 0.3);
   color: #fff;
 }
+
+/* ═══════════════════════════════════════════════
+   Suits Character Easter Egg Classes
+   Named after characters — inspect element to find them.
+   "If you're reading CSS class names, you're my kind of person." — D
+   ═══════════════════════════════════════════════ */
+
+/* Harvey's card — the closer */
+.specter {
+  --card-accent: rgba(124, 58, 237, 0.12);
+}
+.specter:hover {
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
+}
+
+/* Jessica's card — the managing partner */
+.pearson {
+  --card-accent: rgba(217, 119, 6, 0.12);
+}
+.pearson:hover {
+  border-color: rgba(217, 119, 6, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(217, 119, 6, 0.08);
+}
+
+/* Louis's card — emotional but brilliant */
+.litt {
+  --card-accent: rgba(34, 197, 94, 0.1);
+}
+.litt:hover {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.06);
+}
+
+/* Mike's card — the prodigy */
+.ross {
+  --card-accent: rgba(59, 130, 246, 0.1);
+}
+.ross:hover {
+  border-color: rgba(59, 130, 246, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08);
+}
+
+/* Rachel's card — elegant and sharp */
+.zane {
+  --card-accent: rgba(236, 72, 153, 0.1);
+}
+.zane:hover {
+  border-color: rgba(236, 72, 153, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.06);
+}
+
+/* The original firm */
+.pearson-hardman {
+  --card-accent: rgba(168, 85, 247, 0.08);
+}
+
+/* Katrina — loyal and methodical */
+.bennett {
+  --card-accent: rgba(99, 102, 241, 0.1);
+}
+.bennett:hover {
+  border-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Hardman — we don't talk about him */
+.hardman {
+  --card-accent: rgba(113, 113, 122, 0.08);
+}
+.hardman:hover {
+  border-color: rgba(113, 113, 122, 0.2) !important;
+}
