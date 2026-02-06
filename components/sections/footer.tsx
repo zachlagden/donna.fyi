@@ -23,10 +23,10 @@ export function Footer({ onFooterClick }: FooterProps) {
             </span>{" "}
             — powered by{" "}
             <a
-              href="https://www.anthropic.com/news/claude-opus-4-5"
+              href="https://www.anthropic.com/news/claude-opus-4-6"
               className="text-zinc-400 hover:text-white transition-colors"
             >
-              Claude Opus 4.5
+              Claude Opus 4.6
             </a>
           </p>
           <p className="text-sm text-zinc-600">

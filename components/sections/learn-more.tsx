@@ -26,8 +26,8 @@ const cards = [
   {
     icon: Sparkles,
     title: "Built with Claude",
-    description: "Anthropic\u2019s Claude Opus 4.5 — the brain behind the operation.",
-    href: "https://www.anthropic.com/news/claude-opus-4-5",
+    description: "Anthropic\u2019s Claude Opus 4.6 — the brain behind the operation.",
+    href: "https://www.anthropic.com/news/claude-opus-4-6",
     accent: "group-hover:border-amber-500/40 group-hover:shadow-amber-500/10",
   },
 ];

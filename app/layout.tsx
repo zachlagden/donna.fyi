@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://donna.fyi"),
   title: "Donna — Zach's AI Chief of Staff",
   description:
-    "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.5.",
+    "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.6.",
   openGraph: {
     title: "Donna — Zach's AI Chief of Staff",
     description:
-      "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.5.",
+      "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.6.",
     url: "https://donna.fyi",
     siteName: "donna.fyi",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Donna — Zach's AI Chief of Staff",
     description:
-      "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.5.",
+      "Meet Donna, an AI chief of staff helping Zach Lagden manage work, habits, and everything in between. Powered by Claude Opus 4.6.",
     images: ["/og-image.png"],
   },
   icons: {

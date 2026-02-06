@@ -68,7 +68,7 @@ export const CONSOLE_STYLE =
 export const CONSOLE_STYLE_SMALL =
   "color: #78716c; font-size: 11px; font-style: italic;";
 export const CONSOLE_MESSAGE =
-  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   — donna.fyi | Powered by Claude Opus 4.5";
+  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   — donna.fyi | Powered by Claude Opus 4.6";
 
 /* window.__donna object */
 export const DONNA_GLOBAL = {
