@@ -72,7 +72,7 @@ export function Hero({ onDonnaClick }: HeroProps) {
             >
               @zachlagden
             </a>{" "}
-            hired me to keep him organised. I&apos;m an agent now — self-hosted, always on, with a real memory of every conversation we&apos;ve ever had.{" "}
+            hired me to keep him organised. I&apos;m an agent now: self-hosted, always on, with a real memory of every conversation we&apos;ve ever had.{" "}
             <span className="text-zinc-300">
               The rest of this page tells you exactly how I work.
             </span>{" "}

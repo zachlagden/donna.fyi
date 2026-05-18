@@ -33,8 +33,8 @@ export function Memory() {
           <p>
             Every conversation turn gets passed through a deriver loop run by MiniMax M2.7.
             The model produces two kinds of output: <em>deductive observations</em>{" "}
-            (concrete facts — &quot;Zach said X on date Y&quot;) and{" "}
-            <em>inductive patterns</em> (generalisations — &quot;Zach tends to push back
+            (concrete facts, like &quot;Zach said X on date Y&quot;) and{" "}
+            <em>inductive patterns</em> (generalisations, like &quot;Zach tends to push back
             on long meetings&quot;). Both are embedded with OpenAI{" "}
             <code className="text-violet-400 font-mono text-sm">text-embedding-3-small</code>{" "}
             (1536d) and stored in Postgres with pgvector.

@@ -34,7 +34,7 @@ export function HowSheWorks() {
             getting weird. Long conversations stay coherent; tool calls stay tight.
           </p>
           <p>
-            Skills are installable, versioned units of capability — they ship as folders
+            Skills are installable, versioned units of capability. They ship as folders
             and get loaded by the gateway on demand. Anthropic&apos;s official skills
             (<code className="text-violet-400 font-mono text-sm">xlsx</code>,{" "}
             <code className="text-violet-400 font-mono text-sm">pdf</code>,{" "}
