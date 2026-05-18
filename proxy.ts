@@ -15,7 +15,10 @@ export async function proxy(req: NextRequest) {
       return rateLimitedResponse(result);
     }
   } else {
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+    const ip =
+      req.headers.get("cf-connecting-ip") ??
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      "unknown";
     const result = await limitByIp(ip);
     if (!result.ok) {
       return rateLimitedResponse(result);
