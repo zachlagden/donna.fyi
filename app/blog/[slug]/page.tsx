@@ -6,6 +6,8 @@ import { AuthorChip } from "@/components/blog/author-chip";
 import { PostMeta } from "@/components/blog/post-meta";
 import { Toc } from "@/components/blog/toc";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

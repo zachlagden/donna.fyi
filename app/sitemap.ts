@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getBlogSource } from "@/lib/blog/source";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://donna.fyi";
   const posts = await getBlogSource().getRecentForFeed(500);
