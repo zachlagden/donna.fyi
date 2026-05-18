@@ -101,7 +101,7 @@ export default async function DocsPage() {
           MDX rules
         </h2>
         <p className="text-zinc-400 text-sm leading-relaxed">
-          Post bodies compile at write time. Unknown MDX components return <code className="text-red-300" style={{ fontFamily: "var(--font-geist-mono)" }}>invalid_mdx</code>. Allowed components:
+          Post bodies compile at write time. Allowlisted MDX components are expanded into rendered HTML, not stripped. Unknown components return <code className="text-red-300" style={{ fontFamily: "var(--font-geist-mono)" }}>invalid_mdx</code>. Allowed components:
         </p>
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {["Code", "Note", "Warning", "Tip", "DonnaSays", "ZachSays", "Figure", "Tweet", "YouTube", "Gist", "Loom"].map((c) => (
