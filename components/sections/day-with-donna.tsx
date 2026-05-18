@@ -13,8 +13,8 @@ export function DayWithDonna() {
             A Day with Donna
           </span>
         </h2>
-        <p className="text-zinc-600 text-sm mb-12 italic">
-          This isn&apos;t hypothetical. This is a Tuesday.
+        <p className="text-zinc-600 text-sm mb-12 italic" style={{ fontFamily: "var(--font-newsreader)" }}>
+          Representative behaviours, not a personal log.
         </p>
       </FadeIn>
 
@@ -59,8 +59,8 @@ export function DayWithDonna() {
 
         {/* Closing note */}
         <FadeIn delay={timeline.length * 0.08 + 0.1}>
-          <p className="text-center text-zinc-600 text-sm mt-8 italic">
-            And that&apos;s just a quiet day.
+          <p className="text-center text-zinc-600 text-sm mt-8 italic" style={{ fontFamily: "var(--font-newsreader)" }}>
+            And that&apos;s a quiet day.
           </p>
         </FadeIn>
       </div>

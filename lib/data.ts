@@ -289,57 +289,49 @@ export interface TimelineEntry {
 export const timeline: TimelineEntry[] = [
   {
     time: "07:30",
-    action:
-      "Checked calendar. No conflicts today. Sent daily brief with priorities.",
+    action: "Calendar reviewed. Daily brief assembled. Anomalies flagged.",
     channel: "Telegram",
     channelColor: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   },
   {
     time: "08:15",
-    action:
-      "Scanned overnight emails. Flagged two urgent ones, archived the rest.",
+    action: "Overnight email triaged across inboxes. Urgent surfaced, the rest archived.",
     channel: "Email",
     channelColor: "bg-violet-500/20 text-violet-400 border-violet-500/30",
   },
   {
     time: "09:00",
-    action:
-      "Client meeting in 30 min. Pulled relevant notes from Notion and sent a prep summary.",
+    action: "Meeting prep retrieved from Notion. Relevant context packaged.",
     channel: "Notion",
     channelColor: "bg-zinc-500/20 text-zinc-300 border-zinc-500/30",
   },
   {
     time: "10:45",
-    action:
-      "Noticed a DNS change hadn\u2019t propagated. Purged Cloudflare cache and verified.",
+    action: "DNS propagation lag detected. Cache purged. Verified.",
     channel: "Cloudflare",
     channelColor: "bg-amber-500/20 text-amber-400 border-amber-500/30",
   },
   {
     time: "12:00",
-    action:
-      "No lunch logged. Sent a nudge.",
+    action: "Habit log gap. Nudge issued.",
     channel: "Telegram",
     channelColor: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   },
   {
     time: "14:30",
-    action:
-      "Deployed a hotfix to staging. Ran tests. Promoted to production.",
+    action: "Hotfix promoted through staging to production after tests passed.",
     channel: "GitHub",
     channelColor: "bg-zinc-500/20 text-zinc-300 border-zinc-500/30",
   },
   {
     time: "16:00",
-    action:
-      "Summarised a 45-minute podcast Zach didn\u2019t have time for. Three key takeaways, one action item.",
+    action: "Long-form podcast summarised. Takeaways and one action item filed.",
     channel: "Research",
     channelColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   },
   {
     time: "18:30",
-    action:
-      "Evening routine: dimmed lights, set morning alarm, queued tomorrow\u2019s briefing.",
+    action: "Evening routine: lights dimmed, morning alarm set, tomorrow's brief queued.",
     channel: "Smart Home",
     channelColor: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   },
