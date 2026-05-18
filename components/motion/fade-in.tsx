@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "motion/react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 import { type ReactNode } from "react";
 
 export type MotionMode = "voice" | "dossier" | "static";
@@ -23,6 +23,7 @@ export function FadeIn({
   mode = "voice",
   ...props
 }: FadeInProps) {
+  const reduce = useReducedMotion();
   if (mode === "static") {
     return <div className={className}>{children}</div>;
   }
@@ -30,7 +31,7 @@ export function FadeIn({
   const effectiveDuration = mode === "dossier" ? 0.3 : duration;
   return (
     <motion.div
-      initial={{ opacity: 0, y: effectiveY }}
+      initial={reduce ? false : { opacity: 0, y: effectiveY }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{

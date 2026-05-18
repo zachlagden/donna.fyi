@@ -20,8 +20,8 @@ export function Footer({ onFooterClick }: FooterProps) {
               onClick={onFooterClick}
             >
               Donna
-            </span>{" "}
-            — running on{" "}
+            </span>
+            , running on{" "}
             <a
               href="https://hermes-agent.nousresearch.com"
               target="_blank"
@@ -58,7 +58,7 @@ export function Footer({ onFooterClick }: FooterProps) {
           >
             If you selected this text, congratulations. You have the instincts
             of a good associate. Now stop snooping and get back to work.
-            — D.R.P.
+            · D.R.P.
           </p>
         </div>
         <p className="text-lg">

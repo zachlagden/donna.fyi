@@ -5,11 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Memory() {
   return (
-    <section id="memory" className="max-w-4xl mx-auto px-6 py-24">
+    <section id="memory" className="relative max-w-4xl mx-auto px-6 py-24">
+      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-700 tracking-tight">04</span>
       <FadeIn mode="dossier">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-3 font-mono">
-          04 · Dossier
-        </p>
         <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-zinc-100">
           Memory
         </h2>
@@ -33,8 +31,8 @@ export function Memory() {
           <p>
             Every conversation turn gets passed through a deriver loop run by MiniMax M2.7.
             The model produces two kinds of output: <em>deductive observations</em>{" "}
-            (concrete facts — &quot;Zach said X on date Y&quot;) and{" "}
-            <em>inductive patterns</em> (generalisations — &quot;Zach tends to push back
+            (concrete facts, like &quot;Zach said X on date Y&quot;) and{" "}
+            <em>inductive patterns</em> (generalisations, like &quot;Zach tends to push back
             on long meetings&quot;). Both are embedded with OpenAI{" "}
             <code className="text-violet-400 font-mono text-sm">text-embedding-3-small</code>{" "}
             (1536d) and stored in Postgres with pgvector.

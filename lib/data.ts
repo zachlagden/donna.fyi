@@ -4,7 +4,7 @@ import {
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════
-   Capabilities — Categorised
+   Capabilities · Categorised
    ═══════════════════════════════════════════════ */
 
 export interface Tool {
@@ -212,7 +212,7 @@ export const capabilities: CapabilityCategory[] = [
 ];
 
 /* ═══════════════════════════════════════════════
-   A Day with Donna — Timeline
+   A Day with Donna · Timeline
    ═══════════════════════════════════════════════ */
 
 export interface TimelineEntry {
@@ -274,7 +274,7 @@ export const timeline: TimelineEntry[] = [
 ];
 
 /* ═══════════════════════════════════════════════
-   Donna Difference — Chat exchanges
+   Donna Difference · Chat exchanges
    ═══════════════════════════════════════════════ */
 
 export interface ChatExchange {

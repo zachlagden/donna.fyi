@@ -32,16 +32,12 @@ export default async function PostPage({ params }: Props) {
   const post = await getBlogSource().getPost(slug);
   if (!post) notFound();
 
-  const accentEdge = post.author.accent === "violet"
-    ? "border-l-violet-500/40"
-    : "border-l-amber-500/40";
-
   return (
     <div className="min-h-screen bg-zinc-950 bg-grid-pattern">
       <Nav variant="blog" />
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-32 grid xl:grid-cols-[1fr_220px] gap-12">
         <article className="max-w-[640px] mx-auto xl:mx-0 w-full">
-          <header className={`border-l-2 ${accentEdge} pl-6 mb-10`}>
+          <header className="mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <AuthorChip author={post.author} />
               {post.tags.map((t) => (

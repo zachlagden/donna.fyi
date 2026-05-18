@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════
-   Easter Eggs — Suits References (No Spoilers)
+   Easter Eggs · Suits References (No Spoilers)
    "If you're reading this source code, I already
-    know what you're looking for." — D.R.P.
+    know what you're looking for." · D.R.P.
    ═══════════════════════════════════════════════ */
 
 export const KONAMI_CODE = [
@@ -57,7 +57,7 @@ export const HIDDEN_DATA_ATTRS = {
   "data-can-opener": "Nice try. Nobody knows.",
   "data-the-other-time": "We agreed never to discuss this.",
   "data-pearson":
-    "The one who taught me that loyalty isn't given — it's earned.",
+    "The one who taught me that loyalty isn't given. It's earned.",
   "data-harvey": "He thinks he runs things. That's cute.",
   "data-rick-sorkin": "If you know, you know.",
 };
@@ -68,7 +68,7 @@ export const CONSOLE_STYLE =
 export const CONSOLE_STYLE_SMALL =
   "color: #78716c; font-size: 11px; font-style: italic;";
 export const CONSOLE_MESSAGE =
-  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   — donna.fyi | Hermes Agent + MiniMax M2.7 + Honcho";
+  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   · donna.fyi | Hermes Agent + MiniMax M2.7 + Honcho";
 
 /* window.__donna object */
 export const DONNA_GLOBAL = {
@@ -86,6 +86,6 @@ export const NAV_SECTIONS = [
   { id: "how-she-works", label: "How She Works" },
   { id: "memory", label: "Memory" },
   { id: "skill-surface", label: "Skills" },
-  { id: "day-with-donna", label: "A Day" },
-  { id: "difference", label: "Difference" },
+  { id: "in-the-background", label: "Background" },
+  { id: "how-i-think", label: "How I Think" },
 ] as const;

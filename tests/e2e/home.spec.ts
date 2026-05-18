@@ -7,8 +7,8 @@ test("home page renders all sections", async ({ page }) => {
   await expect(page.locator("#how-she-works")).toBeVisible();
   await expect(page.locator("#memory")).toBeVisible();
   await expect(page.locator("#skill-surface")).toBeVisible();
-  await expect(page.locator("#day-with-donna")).toBeVisible();
-  await expect(page.locator("#difference")).toBeVisible();
+  await expect(page.locator("#in-the-background")).toBeVisible();
+  await expect(page.locator("#how-i-think")).toBeVisible();
   await expect(page.getByText("Hermes Agent").first()).toBeVisible();
   await expect(page.getByText("MiniMax M2.7").first()).toBeVisible();
 });

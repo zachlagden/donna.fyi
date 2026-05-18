@@ -6,11 +6,9 @@ import { ArrowUpRight } from "lucide-react";
 
 export function HowSheWorks() {
   return (
-    <section id="how-she-works" className="max-w-4xl mx-auto px-6 py-24">
+    <section id="how-she-works" className="relative max-w-4xl mx-auto px-6 py-28">
+      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-700 tracking-tight">03</span>
       <FadeIn mode="dossier">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-3 font-mono">
-          03 · Dossier
-        </p>
         <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-zinc-100">
           How she works
         </h2>
@@ -34,7 +32,7 @@ export function HowSheWorks() {
             getting weird. Long conversations stay coherent; tool calls stay tight.
           </p>
           <p>
-            Skills are installable, versioned units of capability — they ship as folders
+            Skills are installable, versioned units of capability. They ship as folders
             and get loaded by the gateway on demand. Anthropic&apos;s official skills
             (<code className="text-violet-400 font-mono text-sm">xlsx</code>,{" "}
             <code className="text-violet-400 font-mono text-sm">pdf</code>,{" "}
