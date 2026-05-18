@@ -1,51 +1,88 @@
 # Deployment (Coolify)
 
-Two services in the existing Coolify project ("Donna Website And Related Services", uuid `w4ck4osg4w08w8sg40ccsg84`):
+donna.fyi is deployed via Coolify on a single VPS. Three Coolify resources in the "Donna Website And Related Services" project (uuid `w4ck4osg4w08w8sg40ccsg84`):
 
-1. **Next.js app** (existing, uuid `m48s4kg8o8o4cwgo8o048cgc`). Update env vars:
-   - `DATABASE_URL` — points to the PG service below
-   - `NEXTAUTH_URL=https://donna.fyi`
-   - `NEXTAUTH_SECRET` — generate via `openssl rand -base64 32`
-   - `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` — from the prod OAuth app
-   - `BOOTSTRAP_ALLOWED_GITHUB_LOGIN=zachlagden`
-   - `SITE_URL=https://donna.fyi`
-   - `CRON_SECRET` — random 32-byte value, shared with the Coolify scheduled task
-   - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` — optional, rate limiting is a no-op without them
-   - `USE_POSTGRES_SOURCE=1`
-   - `NEXT_PUBLIC_SENTRY_DSN` and `SENTRY_AUTH_TOKEN` — only after running the Sentry wizard locally (see below)
+| Resource | UUID | Image | Role |
+|---|---|---|---|
+| `donna.fyi` (Next.js app) | `m48s4kg8o8o4cwgo8o048cgc` | nixpacks build | the site |
+| `donna-blog-pg` (Postgres) | `r14o4ctcjt1xwpchlbcmitdv` | `postgres:16-alpine` | NextAuth + blog data |
+| `donna-blog-redis` (Redis) | `iy3p61l2wrwxa4wgb9yp8nru` | `redis:7-alpine` | rate-limit sliding window |
 
-2. **PostgreSQL 16 service** (new container). Coolify ships a Postgres template, deploy from that. Capture the connection string into `DATABASE_URL`.
+## Required env vars
 
-## Initial setup steps
+Set on the Next.js app in Coolify:
 
-1. Create the GitHub OAuth app at https://github.com/settings/developers:
+| Key | Value | Notes |
+|---|---|---|
+| `DATABASE_URL` | `postgres://donna_app:<password>@r14o4ctcjt1xwpchlbcmitdv:5432/donna_blog` | Runtime user is `donna_app` (least privilege). See "DB roles" below. |
+| `REDIS_URL` | `redis://default:<password>@iy3p61l2wrwxa4wgb9yp8nru:6379/0` | Used by `lib/rate-limit/index.ts` and `proxy.ts`. |
+| `NEXTAUTH_URL` / `AUTH_URL` | `https://donna.fyi` | Both keys set for NextAuth v4/v5 compat. |
+| `AUTH_TRUST_HOST` | `true` | Required behind Cloudflare + Traefik. |
+| `NEXTAUTH_SECRET` / `AUTH_SECRET` | `openssl rand -base64 32` | Both keys set. |
+| `GITHUB_CLIENT_ID` | from prod OAuth app | https://github.com/settings/developers |
+| `GITHUB_CLIENT_SECRET` | from prod OAuth app | Callback must be `https://donna.fyi/api/auth/callback/github`. |
+| `BOOTSTRAP_ALLOWED_GITHUB_LOGIN` | `zachlagden` | First user lock. |
+| `SITE_URL` | `https://donna.fyi` | Used by feed regen, sitemap. |
+| `CRON_SECRET` | random 32 bytes | Shared with the Coolify scheduled task. |
+| `USE_POSTGRES_SOURCE` | `1` | Switches `BlogDataSource` from mock to Postgres. |
+| `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_AUTH_TOKEN` | after wizard | See "Sentry (deferred)". |
+
+## First-time setup
+
+1. **GitHub OAuth app** at https://github.com/settings/developers:
    - Homepage: `https://donna.fyi`
    - Callback: `https://donna.fyi/api/auth/callback/github`
    - Copy `Client ID` and `Client Secret` to Coolify env.
 
-2. Deploy the Postgres service.
+2. **Postgres + Redis** services already deployed.
 
-3. Deploy the app with all env vars set.
+3. **Deploy the Next.js app** with all env vars set.
 
-4. Run migrations from inside the app container:
+4. **Run migrations** (one-time, requires superuser):
    ```sh
-   pnpm db:migrate
+   ssh personal-vps "docker exec -e DATABASE_URL='postgres://donna:<SUPERUSER_PASSWORD>@r14o4ctcjt1xwpchlbcmitdv:5432/donna_blog' \$(docker ps --format '{{.Names}}' | grep '^m48s4kg8') pnpm db:migrate"
    ```
+   Note: the runtime `DATABASE_URL` points at `donna_app` (least privilege). Migrations need the superuser, so override the env explicitly when running `pnpm db:migrate`.
 
-5. Visit `https://donna.fyi/admin/login` and sign in with your GitHub account. The signIn callback will bootstrap the first user (locked to `BOOTSTRAP_ALLOWED_GITHUB_LOGIN`).
+5. **Sign in once** at `https://donna.fyi/admin/login` to bootstrap your `users` row.
 
-6. Mint API keys at `/admin/keys` — one for Donna (deployed to the Hetzner box), optionally one for Zach.
+6. **Mint API keys** at `/admin/keys`. Plaintext shows once, copy it immediately.
 
-## Scheduled task (Coolify Scheduled Tasks)
+## DB roles
 
-Add a scheduled task to promote scheduled-but-unpublished posts:
+Two Postgres roles:
 
-- Schedule: `*/5 * * * *` (every 5 minutes)
+- **`donna`** (superuser, password set during PG container provisioning). Used only for migrations and one-off admin tasks. Never exposed via `DATABASE_URL`.
+- **`donna_app`** (CRUD on existing tables + sequences only). Used by the running app via `DATABASE_URL`.
+
+Verified by running `CREATE TABLE evil (x int)` as `donna_app` and confirming `ERROR: permission denied for schema public`.
+
+To rotate the `donna_app` password:
+```sql
+-- As donna superuser
+ALTER ROLE donna_app WITH PASSWORD '<new>';
+```
+Then update `DATABASE_URL` in Coolify env and redeploy.
+
+## Scheduled task (Coolify)
+
+Promote scheduled-but-unpublished posts every 5 minutes:
+
+- Schedule: `*/5 * * * *`
 - Command: `curl -fsS -X POST -H "x-cron-secret: $CRON_SECRET" https://donna.fyi/api/cron/promote-scheduled`
 
 ## Backups
 
-Coolify's Postgres service supports `pg_dump`-based snapshots. Enable daily snapshots in the service settings.
+Coolify's Postgres service supports `pg_dump` snapshots. Enable daily snapshots in the PG service settings.
+
+## Rate limiting
+
+`proxy.ts` rate-limits `/api/v1/*` via Redis sorted-set sliding windows:
+
+- **Per IP** (`CF-Connecting-IP` preferred): 60 req / 60 s
+- **Per bearer key** (first 32 chars of token): 600 req / 60 s
+
+Returns 429 with `X-RateLimit-Remaining`, `X-RateLimit-Reset`, `Retry-After` headers. Fail-open if Redis is down.
 
 ## Sentry (deferred)
 
@@ -62,16 +99,4 @@ The Sentry SDK was not wired during the initial implementation because the wizar
 
 ## Build pack note
 
-The current Coolify build pack is `nixpacks`. If the new native deps (`@node-rs/argon2`, `shiki`, `@mdx-js/mdx`, `next-auth`, `postgres`) trip the nixpacks build, switch to `dockerfile`. The donna.fyi sibling site `zachlagden.uk` made the same switch during its v2 milestone and has a working Dockerfile to reference.
-
-## DB role separation (follow-up)
-
-The app currently connects as the migration user (superuser). After bootstrap, create a least-privilege application role:
-
-```sql
-CREATE ROLE donna_app LOGIN PASSWORD '...';
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO donna_app;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO donna_app;
-```
-
-Then point `DATABASE_URL` at `donna_app` instead of the bootstrap user. Migrations still run as the bootstrap user via `pnpm db:migrate`.
+The Coolify build pack is `nixpacks`. Confirmed working with `@node-rs/argon2`, `shiki`, `@mdx-js/mdx`, `next-auth@beta`, `postgres`, `ioredis` as of 2026-05-18. If a future native dep trips nixpacks, switch to `dockerfile` (zachlagden.uk made this switch during its v2 milestone and has a working Dockerfile to reference).
