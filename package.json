@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
-    "db:migrate": "tsx scripts/migrate.ts"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "cron:promote": "tsx scripts/promote-scheduled.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
