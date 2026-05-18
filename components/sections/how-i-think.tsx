@@ -20,35 +20,35 @@ const T = {
 } as const;
 
 const MEMORY_DOTS: { cx: number; cy: number; r: number; o: number }[] = [
-  { cx: 508, cy: 34, r: 1.6, o: 0.18 },
-  { cx: 542, cy: 22, r: 1.4, o: 0.24 },
-  { cx: 578, cy: 48, r: 1.8, o: 0.16 },
-  { cx: 612, cy: 30, r: 1.5, o: 0.22 },
-  { cx: 648, cy: 58, r: 1.6, o: 0.18 },
-  { cx: 686, cy: 28, r: 1.4, o: 0.26 },
-  { cx: 724, cy: 46, r: 1.7, o: 0.2 },
-  { cx: 760, cy: 36, r: 1.5, o: 0.22 },
-  { cx: 522, cy: 72, r: 1.6, o: 0.2 },
-  { cx: 560, cy: 86, r: 1.8, o: 0.16 },
-  { cx: 596, cy: 78, r: 1.5, o: 0.24 },
-  { cx: 632, cy: 96, r: 1.4, o: 0.18 },
-  { cx: 670, cy: 80, r: 1.7, o: 0.22 },
-  { cx: 708, cy: 92, r: 1.6, o: 0.2 },
-  { cx: 744, cy: 84, r: 1.5, o: 0.24 },
-  { cx: 778, cy: 70, r: 1.4, o: 0.18 },
-  { cx: 514, cy: 116, r: 1.7, o: 0.22 },
-  { cx: 550, cy: 130, r: 1.5, o: 0.18 },
-  { cx: 588, cy: 122, r: 1.6, o: 0.24 },
-  { cx: 624, cy: 142, r: 1.4, o: 0.16 },
-  { cx: 660, cy: 128, r: 1.8, o: 0.2 },
-  { cx: 698, cy: 140, r: 1.5, o: 0.22 },
-  { cx: 736, cy: 122, r: 1.6, o: 0.18 },
-  { cx: 770, cy: 138, r: 1.4, o: 0.24 },
+  { cx: 508, cy: 14, r: 1.6, o: 0.18 },
+  { cx: 542, cy: 8, r: 1.4, o: 0.24 },
+  { cx: 578, cy: 28, r: 1.8, o: 0.16 },
+  { cx: 612, cy: 10, r: 1.5, o: 0.22 },
+  { cx: 648, cy: 38, r: 1.6, o: 0.18 },
+  { cx: 686, cy: 12, r: 1.4, o: 0.26 },
+  { cx: 724, cy: 26, r: 1.7, o: 0.2 },
+  { cx: 760, cy: 16, r: 1.5, o: 0.22 },
+  { cx: 522, cy: 52, r: 1.6, o: 0.2 },
+  { cx: 560, cy: 66, r: 1.8, o: 0.16 },
+  { cx: 596, cy: 58, r: 1.5, o: 0.24 },
+  { cx: 632, cy: 76, r: 1.4, o: 0.18 },
+  { cx: 670, cy: 60, r: 1.7, o: 0.22 },
+  { cx: 708, cy: 72, r: 1.6, o: 0.2 },
+  { cx: 744, cy: 64, r: 1.5, o: 0.24 },
+  { cx: 778, cy: 50, r: 1.4, o: 0.18 },
+  { cx: 514, cy: 96, r: 1.7, o: 0.22 },
+  { cx: 550, cy: 110, r: 1.5, o: 0.18 },
+  { cx: 588, cy: 102, r: 1.6, o: 0.24 },
+  { cx: 624, cy: 118, r: 1.4, o: 0.16 },
+  { cx: 660, cy: 108, r: 1.8, o: 0.2 },
+  { cx: 698, cy: 116, r: 1.5, o: 0.22 },
+  { cx: 736, cy: 102, r: 1.6, o: 0.18 },
+  { cx: 770, cy: 114, r: 1.4, o: 0.24 },
 ];
 
 const ILLUMINATED_INDICES = [3, 9, 14, 18, 21];
 
-const REASONING_CENTER = { x: 360, y: 80 };
+const REASONING_CENTER = { x: 360, y: 60 };
 
 interface StepProps {
   number: string;
@@ -76,7 +76,7 @@ function ReasoningStep({ number, label, caption, children, delay, ariaLabel }: S
 
       <div className="relative">
         <svg
-          viewBox="0 0 800 160"
+          viewBox="0 0 800 120"
           className="w-full h-auto block"
           role="img"
           aria-label={ariaLabel}
@@ -130,33 +130,33 @@ function Step1UserTurn() {
       >
         <rect
           x="20"
-          y="48"
-          width="360"
-          height="64"
+          y="22"
+          width="380"
+          height="76"
           rx="14"
           fill="rgba(39,39,42,0.5)"
           stroke={NEUTRAL_FAINT}
           strokeWidth="1"
         />
         <path
-          d="M 20 92 L 14 104 L 28 100 Z"
+          d="M 20 76 L 14 90 L 28 86 Z"
           fill="rgba(39,39,42,0.5)"
           stroke={NEUTRAL_FAINT}
           strokeWidth="1"
         />
-        <text x="38" y="74" fontSize="11" fill={NEUTRAL} opacity="0.7">
+        <text x="42" y="52" fontSize="11" fill={NEUTRAL} opacity="0.7">
           you
         </text>
-        <text x="38" y="98" fontSize="13" fill="#d4d4d8">
+        <text x="42" y="80" fontSize="13" fill="#d4d4d8">
           anything urgent in the inbox?
         </text>
       </motion.g>
 
       <motion.line
-        x1={395}
-        y1={80}
+        x1={415}
+        y1={60}
         x2={520}
-        y2={80}
+        y2={60}
         stroke={NEUTRAL}
         strokeWidth="1.25"
         strokeLinecap="round"
@@ -172,7 +172,7 @@ function Step1UserTurn() {
 
       <motion.text
         x={780}
-        y={84}
+        y={64}
         fontSize="10"
         fill={NEUTRAL}
         textAnchor="end"
@@ -200,7 +200,7 @@ function Step2MemoryRetrieve() {
     >
       <motion.text
         x={20}
-        y={36}
+        y={20}
         fontSize="10"
         fill={NEUTRAL}
         opacity="0.7"
@@ -213,7 +213,7 @@ function Step2MemoryRetrieve() {
       </motion.text>
       <motion.text
         x={20}
-        y={54}
+        y={36}
         fontSize="9"
         fill={NEUTRAL}
         opacity="0.5"
@@ -233,9 +233,9 @@ function Step2MemoryRetrieve() {
       >
         <rect
           x="478"
-          y="6"
+          y="0"
           width="316"
-          height="148"
+          height="120"
           rx="8"
           fill="none"
           stroke={NEUTRAL_FAINT}
@@ -243,7 +243,7 @@ function Step2MemoryRetrieve() {
           strokeWidth="1"
           opacity="0.5"
         />
-        <text x="494" y="20" fontSize="9" fill={NEUTRAL} opacity="0.5">
+        <text x="494" y="14" fontSize="9" fill={NEUTRAL} opacity="0.5">
           memory field
         </text>
       </motion.g>
@@ -288,7 +288,7 @@ function Step2MemoryRetrieve() {
             x1={dot.cx}
             y1={dot.cy}
             x2={440}
-            y2={80}
+            y2={60}
             stroke={VIOLET_DIM}
             strokeWidth="0.75"
             strokeLinecap="round"
@@ -306,7 +306,7 @@ function Step2MemoryRetrieve() {
 
       <motion.circle
         cx={440}
-        cy={80}
+        cy={60}
         r={3}
         fill={VIOLET}
         initial={reduce ? false : { opacity: 0, scale: 0 }}
@@ -350,9 +350,9 @@ function Step3ModelReason() {
       >
         <rect
           x="180"
-          y="26"
+          y="10"
           width="360"
-          height="108"
+          height="100"
           rx="14"
           fill="none"
           stroke={VIOLET_DIM}
@@ -362,9 +362,9 @@ function Step3ModelReason() {
         />
         <rect
           x="190"
-          y="36"
+          y="20"
           width="340"
-          height="88"
+          height="80"
           rx="10"
           fill="rgba(124,58,237,0.04)"
           stroke="none"
@@ -373,9 +373,9 @@ function Step3ModelReason() {
         {reduce ? (
           <rect
             x="184"
-            y="30"
+            y="14"
             width="352"
-            height="100"
+            height="92"
             rx="12"
             fill="none"
             stroke={VIOLET_STRONG}
@@ -384,9 +384,9 @@ function Step3ModelReason() {
         ) : (
           <motion.rect
             x="184"
-            y="30"
+            y="14"
             width="352"
-            height="100"
+            height="92"
             rx="12"
             fill="none"
             stroke={VIOLET_STRONG}
@@ -404,7 +404,7 @@ function Step3ModelReason() {
 
       <motion.text
         x={360}
-        y={56}
+        y={36}
         fontSize="11"
         fill={VIOLET}
         textAnchor="middle"
@@ -418,9 +418,9 @@ function Step3ModelReason() {
       </motion.text>
 
       {[
-        { text: "assess.unread", y: 80 },
-        { text: "check.priorities", y: 98 },
-        { text: "compose.summary", y: 116 },
+        { text: "assess.unread", y: 60 },
+        { text: "check.priorities", y: 78 },
+        { text: "compose.summary", y: 96 },
       ].map((tok, i) => (
         <motion.text
           key={tok.text}
@@ -472,18 +472,18 @@ function Step4ToolCall() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.4, delay: start + 0.05 }}
       >
-        <circle cx={140} cy={80} r={5} fill={VIOLET} />
-        <circle cx={140} cy={80} r={10} fill="none" stroke={VIOLET_DIM} strokeWidth="1" opacity="0.4" />
-        <text x={140} y={108} fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+        <circle cx={140} cy={60} r={5} fill={VIOLET} />
+        <circle cx={140} cy={60} r={10} fill="none" stroke={VIOLET_DIM} strokeWidth="1" opacity="0.4" />
+        <text x={140} y={88} fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
           model
         </text>
       </motion.g>
 
       <motion.line
         x1={150}
-        y1={80}
+        y1={60}
         x2={480}
-        y2={80}
+        y2={60}
         stroke={VIOLET_DIM}
         strokeWidth="1.25"
         strokeLinecap="round"
@@ -499,7 +499,7 @@ function Step4ToolCall() {
 
       <motion.text
         x={315}
-        y={72}
+        y={52}
         fontSize="10"
         fill={NEUTRAL}
         textAnchor="middle"
@@ -527,11 +527,11 @@ function Step4ToolCall() {
             ease: EASE,
           },
         }}
-        style={{ transformOrigin: "620px 80px", transformBox: "fill-box" }}
+        style={{ transformOrigin: "620px 60px", transformBox: "fill-box" }}
       >
         <rect
           x="494"
-          y="56"
+          y="36"
           width="252"
           height="50"
           rx="6"
@@ -539,14 +539,14 @@ function Step4ToolCall() {
           stroke={VIOLET_STRONG}
           strokeWidth="1.25"
         />
-        <text x={620} y={86} fontSize="12" fill={VIOLET} textAnchor="middle" fontWeight="500">
+        <text x={620} y={66} fontSize="12" fill={VIOLET} textAnchor="middle" fontWeight="500">
           gmail.list(unread=true)
         </text>
       </motion.g>
 
       <motion.text
         x={620}
-        y={126}
+        y={106}
         fontSize="10"
         fill={NEUTRAL}
         textAnchor="middle"
@@ -589,7 +589,7 @@ function Step5ResponseSend() {
 
       <motion.text
         x={780}
-        y={36}
+        y={20}
         fontSize="10"
         fill={NEUTRAL}
         textAnchor="end"
@@ -604,9 +604,9 @@ function Step5ResponseSend() {
 
       <motion.line
         x1={680}
-        y1={80}
-        x2={420}
-        y2={80}
+        y1={60}
+        x2={440}
+        y2={60}
         stroke={VIOLET_DIM}
         strokeWidth="1.25"
         strokeLinecap="round"
@@ -628,9 +628,9 @@ function Step5ResponseSend() {
       >
         <rect
           x="20"
-          y="38"
-          width="400"
-          height="84"
+          y="14"
+          width="420"
+          height="92"
           rx="14"
           fill="rgba(124,58,237,0.08)"
           stroke={VIOLET_STRONG}
@@ -638,19 +638,19 @@ function Step5ResponseSend() {
           strokeWidth="1"
         />
         <path
-          d="M 420 72 L 432 80 L 420 88 Z"
+          d="M 440 52 L 452 60 L 440 68 Z"
           fill="rgba(124,58,237,0.08)"
           stroke={VIOLET_STRONG}
           strokeOpacity="0.5"
           strokeWidth="1"
         />
-        <text x="38" y="62" fontSize="11" fill={VIOLET} opacity="0.8">
+        <text x="42" y="44" fontSize="11" fill={VIOLET} opacity="0.8">
           donna
         </text>
-        <text x="38" y="86" fontSize="12" fill="#e4e4e7">
+        <text x="42" y="70" fontSize="12" fill="#e4e4e7">
           7 unread. 2 need a reply today.
         </text>
-        <text x="38" y="106" fontSize="12" fill="#e4e4e7">
+        <text x="42" y="92" fontSize="12" fill="#e4e4e7">
           4 can wait. 1 was phishing; deleted.
         </text>
       </motion.g>
@@ -665,7 +665,7 @@ export function HowIThink() {
       className="relative max-w-4xl mx-auto px-6 py-32"
       aria-label="One end-to-end reasoning cycle: user turn, memory retrieval, model reasoning, tool call, response."
     >
-      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-700 tracking-tight">
+      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-600 tracking-tight">
         07
       </span>
 
@@ -687,7 +687,7 @@ export function HowIThink() {
           className="hidden sm:block absolute top-0 bottom-0 left-[60px] w-px bg-zinc-800/40"
         />
 
-        <div className="space-y-20 sm:space-y-24">
+        <div className="space-y-14 sm:space-y-16">
           <Step1UserTurn />
           <Step2MemoryRetrieve />
           <Step3ModelReason />

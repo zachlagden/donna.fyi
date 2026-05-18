@@ -77,6 +77,7 @@ interface DiagramLabelProps {
   delay?: number;
   fill?: string;
   fontSize?: number;
+  dy?: number | string;
 }
 
 export function DiagramLabel({
@@ -87,12 +88,14 @@ export function DiagramLabel({
   delay = 0,
   fill = "#71717a",
   fontSize = 10,
+  dy,
 }: DiagramLabelProps) {
   const reduce = useReducedMotion();
   return (
     <motion.text
       x={x}
       y={y}
+      dy={dy}
       fontSize={fontSize}
       fill={fill}
       textAnchor={textAnchor}

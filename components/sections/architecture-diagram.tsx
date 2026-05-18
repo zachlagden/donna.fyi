@@ -101,7 +101,7 @@ export function ArchitectureDiagram() {
             markerEnd="url(#arrow-neutral)"
             delay={T.telegramToGateway}
           />
-          <DiagramLabel x={280} y={302} fill={LABEL} delay={T.telegramToGateway + 0.3}>
+          <DiagramLabel x={280} y={302} dy={-6} fill={LABEL} delay={T.telegramToGateway + 0.3}>
             user turn
           </DiagramLabel>
 
@@ -175,6 +175,7 @@ export function ArchitectureDiagram() {
           <DiagramLabel
             x={420}
             y={195}
+            dy={-6}
             textAnchor="end"
             fill={LABEL}
             delay={T.gatewayToMinimax + 0.3}
@@ -218,6 +219,7 @@ export function ArchitectureDiagram() {
           <DiagramLabel
             x={580}
             y={195}
+            dy={14}
             textAnchor="start"
             fill={LABEL}
             delay={T.minimaxToGateway + 0.3}
@@ -238,6 +240,7 @@ export function ArchitectureDiagram() {
           <DiagramLabel
             x={420}
             y={415}
+            dy={-6}
             textAnchor="end"
             fill={LABEL}
             delay={T.gatewayToHoncho + 0.3}
@@ -284,6 +287,7 @@ export function ArchitectureDiagram() {
           <DiagramLabel
             x={580}
             y={415}
+            dy={14}
             textAnchor="start"
             fill={LABEL}
             delay={T.honchoToGateway + 0.3}
@@ -301,7 +305,7 @@ export function ArchitectureDiagram() {
             markerEnd="url(#arrow-neutral)"
             delay={T.gatewayToSkills}
           />
-          <DiagramLabel x={720} y={302} fill={LABEL} delay={T.gatewayToSkills + 0.3}>
+          <DiagramLabel x={720} y={302} dy={-6} fill={LABEL} delay={T.gatewayToSkills + 0.3}>
             tool call
           </DiagramLabel>
 
