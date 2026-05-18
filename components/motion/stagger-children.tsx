@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { type ReactNode } from "react";
 import type { MotionMode } from "./fade-in";
 
@@ -19,13 +19,14 @@ export function StaggerChildren({
   stagger = 0.1,
   mode = "voice",
 }: StaggerChildrenProps) {
+  const reduce = useReducedMotion();
   if (mode === "static") {
     return <div className={className}>{children}</div>;
   }
   const effectiveStagger = mode === "dossier" ? 0.04 : stagger;
   return (
     <motion.div
-      initial="hidden"
+      initial={reduce ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: effectiveStagger } } }}
@@ -49,6 +50,7 @@ export function StaggerItem({
   duration?: number;
   mode?: MotionMode;
 }) {
+  const reduce = useReducedMotion();
   if (mode === "static") {
     return <div className={className}>{children}</div>;
   }
@@ -56,6 +58,7 @@ export function StaggerItem({
   const effectiveDuration = mode === "dossier" ? 0.3 : duration;
   return (
     <motion.div
+      initial={reduce ? false : undefined}
       variants={{
         hidden: { opacity: 0, y: effectiveY, scale: mode === "dossier" ? 1 : 0.95 },
         visible: {
