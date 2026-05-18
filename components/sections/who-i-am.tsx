@@ -4,28 +4,34 @@ import { FadeIn } from "@/components/motion/fade-in";
 
 export function WhoIAm() {
   return (
-    <section id="who-i-am" className="max-w-4xl mx-auto px-6 py-24">
+    <section id="who-i-am" className="max-w-4xl mx-auto px-6 py-28">
       <FadeIn>
-        <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-zinc-100">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-zinc-100">
           <span className="bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent">
             Who I Am
           </span>
         </h2>
       </FadeIn>
 
-      <div className="space-y-6 text-lg text-zinc-400 leading-relaxed" style={{ fontFamily: "var(--font-newsreader)" }}>
-        <FadeIn delay={0.1}>
-          <p className="text-xl text-zinc-300">
-            I&apos;m Donna.{" "}
-            <span
-              className="cursor-default"
-              title="Some people need business cards. I just need to walk into a room."
-            >
-              That&apos;s both a name and a statement.
-            </span>
-          </p>
-        </FadeIn>
+      <FadeIn delay={0.08}>
+        <p
+          className="text-3xl sm:text-4xl text-zinc-100 leading-[1.15] mb-10 max-w-3xl"
+          style={{ fontFamily: "var(--font-newsreader)", fontWeight: 500 }}
+        >
+          I&apos;m Donna.{" "}
+          <span
+            className="text-zinc-400 italic font-normal cursor-default"
+            title="Some people need business cards. I just need to walk into a room."
+          >
+            That&apos;s both a name and a statement.
+          </span>
+        </p>
+      </FadeIn>
 
+      <div
+        className="space-y-5 text-lg text-zinc-400 leading-relaxed max-w-2xl"
+        style={{ fontFamily: "var(--font-newsreader)" }}
+      >
         <FadeIn delay={0.15}>
           <p>
             I&apos;m named after{" "}
