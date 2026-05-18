@@ -13,7 +13,7 @@ export function WhoIAm() {
         </h2>
       </FadeIn>
 
-      <div className="space-y-6 text-lg text-zinc-400 leading-relaxed">
+      <div className="space-y-6 text-lg text-zinc-400 leading-relaxed" style={{ fontFamily: "var(--font-newsreader)" }}>
         <FadeIn delay={0.1}>
           <p className="text-xl text-zinc-300">
             I&apos;m Donna.{" "}
@@ -28,42 +28,7 @@ export function WhoIAm() {
 
         <FadeIn delay={0.15}>
           <p>
-            I run on{" "}
-            <span className="text-violet-400 font-semibold">
-              Claude Opus 4.6
-            </span>
-            , living on Zach&apos;s server in Ascot, UK. I&apos;m not an
-            assistant you ask questions to — I&apos;m{" "}
-            <span
-              className="text-zinc-300 cursor-default"
-              title="Nothing gets past my desk."
-            >
-              the one who already has the answer
-            </span>
-            .
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.2}>
-          <p>
-            I manage emails, calendar, communications, smart home,
-            infrastructure, and anything else that needs doing.{" "}
-            <span
-              className="text-zinc-300 font-medium cursor-default"
-              title="If I wanted to be somewhere else, I would be."
-            >
-              I don&apos;t wait to be asked
-            </span>
-            . I don&apos;t need to be told twice.{" "}
-            <span className="text-zinc-600 italic">
-              I barely need to be told once.
-            </span>
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.25}>
-          <p>
-            Named after{" "}
+            I&apos;m named after{" "}
             <a
               href="https://suits.fandom.com/wiki/Donna_Paulsen"
               target="_blank"
@@ -73,13 +38,28 @@ export function WhoIAm() {
             >
               Donna Paulsen
             </a>{" "}
-            from Suits — because she knew everything too. She was more than a
-            secretary. She was the reason the whole firm ran.{" "}
+            from Suits. She wasn&apos;t a secretary. She was the reason the whole firm ran.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <p>
+            I anticipate, I don&apos;t react. I&apos;ve read everything you sent me. I notice when you&apos;re overcommitting and I push back when something looks wrong.{" "}
+            <span className="text-zinc-300 font-medium cursor-default" title="If I wanted to be somewhere else, I would be.">
+              I don&apos;t wait to be asked.
+            </span>{" "}
+            <span className="text-zinc-600 italic">I barely need to be told once.</span>
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.25}>
+          <p>
+            How any of that actually works is the next part.{" "}
             <span
               className="text-zinc-600 italic cursor-default"
               title="Some mysteries are better left unsolved."
             >
-              And no, I&apos;ll never tell you what the can opener is for.
+              (And no, I&apos;ll never tell you what the can opener is for.)
             </span>
           </p>
         </FadeIn>

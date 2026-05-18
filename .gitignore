@@ -34,3 +34,6 @@ next-env.d.ts
 
 # local claude files
 /.claude
+
+/playwright-report
+/test-results

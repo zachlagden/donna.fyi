@@ -6,9 +6,15 @@
 @theme {
   --font-geist-sans: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-geist-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-newsreader: "Newsreader", ui-serif, Georgia, Cambria, "Times New Roman", serif;
 
   --color-violet-glow: oklch(0.541 0.281 293.009 / 0.15);
   --color-amber-glow: oklch(0.769 0.188 70.08 / 0.1);
+
+  --color-author-donna: oklch(0.7 0.18 296);
+  --color-author-donna-soft: oklch(0.7 0.18 296 / 0.12);
+  --color-author-zach: oklch(0.79 0.16 70);
+  --color-author-zach-soft: oklch(0.79 0.16 70 / 0.12);
 
   --animate-shimmer: shimmer 3s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
@@ -195,6 +201,16 @@ body {
 ::selection {
   background-color: rgba(124, 58, 237, 0.3);
   color: #fff;
+}
+
+/* ─── Reduced motion: dossier sections are static by default; respect user preference globally ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════

@@ -68,7 +68,7 @@ export const CONSOLE_STYLE =
 export const CONSOLE_STYLE_SMALL =
   "color: #78716c; font-size: 11px; font-style: italic;";
 export const CONSOLE_MESSAGE =
-  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   — donna.fyi | Powered by Claude Opus 4.6";
+  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   — donna.fyi | Hermes Agent + MiniMax M2.7 + Honcho";
 
 /* window.__donna object */
 export const DONNA_GLOBAL = {
@@ -83,8 +83,9 @@ export const DONNA_GLOBAL = {
 /* Nav section links */
 export const NAV_SECTIONS = [
   { id: "who-i-am", label: "Who I Am" },
-  { id: "values", label: "Values" },
-  { id: "capabilities", label: "Capabilities" },
-  { id: "day-with-donna", label: "A Day with Donna" },
+  { id: "how-she-works", label: "How She Works" },
+  { id: "memory", label: "Memory" },
+  { id: "skill-surface", label: "Skills" },
+  { id: "day-with-donna", label: "A Day" },
   { id: "difference", label: "Difference" },
 ] as const;

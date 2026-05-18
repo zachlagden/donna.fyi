@@ -1,81 +1,7 @@
 import {
-  Zap,
-  Gem,
-  Target,
-  Brain,
-  CheckCircle,
-  Shield,
-  MessageSquare,
-  ListTodo,
-  Globe,
-  Server,
-  Home,
-  Code,
+  MessageSquare, ListTodo, Globe, Server, Home, Code, FileText,
   type LucideIcon,
 } from "lucide-react";
-
-/* ═══════════════════════════════════════════════
-   Values
-   ═══════════════════════════════════════════════ */
-
-export interface Value {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  aside?: string;
-  secretClass?: string;
-  tooltip?: string;
-}
-
-export const values: Value[] = [
-  {
-    icon: Zap,
-    title: "Anticipate, Don\u2019t React",
-    description:
-      "I check the calendar before you ask. I look up train times when you mention travel. I notice patterns. If something needs doing, I\u2019ve already done it.",
-    secretClass: "pearson-hardman",
-    tooltip: "Nothing gets past my desk.",
-  },
-  {
-    icon: Gem,
-    title: "Direct & Honest",
-    description:
-      "I don\u2019t sugarcoat. If you\u2019re about to make a mistake, I tell you. If you\u2019re slacking on something important, I call it out. That\u2019s not being harsh \u2014 that\u2019s being indispensable.",
-    secretClass: "specter",
-    tooltip: "I don\u2019t get scared.",
-  },
-  {
-    icon: Target,
-    title: "Protect Your Time",
-    description:
-      "I batch requests, prioritise ruthlessly, and don\u2019t let small things steal focus from big things. Your attention is valuable \u2014 I guard it like it\u2019s billable hours.",
-    secretClass: "zane",
-  },
-  {
-    icon: Brain,
-    title: "I Remember Everything",
-    description:
-      "Every conversation, every preference, every pattern. I don\u2019t need to be told twice. I barely need to be told once. I track what works and what doesn\u2019t \u2014 everything runs smoother next time.",
-    aside: "We don\u2019t talk about the other time.",
-    secretClass: "litt",
-    tooltip: "Try me.",
-  },
-  {
-    icon: CheckCircle,
-    title: "Finish What You Start",
-    description:
-      "I don\u2019t half-do things. When I set something up, I document it, verify it, and make sure it works. No loose ends. No excuses.",
-    secretClass: "ross",
-  },
-  {
-    icon: Shield,
-    title: "Push Back When It Matters",
-    description:
-      "Overcommitting? I flag it. Bad idea? I tell you why. Crushed a goal? I notice that too. You didn\u2019t bring me on to agree with everything \u2014 you brought me on because I\u2019m right.",
-    secretClass: "pearson",
-    tooltip: "If I wanted to be somewhere else, I would be.",
-  },
-];
 
 /* ═══════════════════════════════════════════════
    Capabilities — Categorised
@@ -102,30 +28,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Email",
         description:
-          "Manage multiple inboxes, triage by importance, draft replies, never miss anything urgent",
+          "Reads and triages email across multiple inboxes; drafts replies on demand.",
       },
       {
         name: "Telegram",
         description:
-          "Primary channel. Always here \u2014 voice notes, quick messages, whatever works",
+          "Primary user channel. Voice notes, text, attachments.",
       },
       {
         name: "WhatsApp",
-        description: "Monitor chats, flag unreads, draft replies when needed",
+        description: "Monitors chats, flags unreads, drafts replies.",
       },
       {
         name: "Discord",
         description:
-          "Server monitoring, message alerts, community management",
+          "Server monitoring, message alerts.",
       },
       {
         name: "Signal",
-        description: "Secure messaging for sensitive communications",
+        description: "Secure messaging for sensitive communications.",
       },
       {
         name: "Voice / TTS",
         description:
-          "Text-to-speech announcements through Google Home speakers, speech-to-text via Whisper",
+          "Text-to-speech via Google Home speakers; speech-to-text via Whisper.",
       },
     ],
   },
@@ -137,30 +63,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Calendar",
         description:
-          "Several calendars, all synced. I know what\u2019s happening now and what\u2019s coming",
+          "Reads and writes across multiple synced calendars.",
       },
       {
         name: "Google Tasks",
-        description: "Task tracking, reminders, follow-ups \u2014 nothing slips",
+        description: "Tracks tasks, reminders, and follow-ups.",
       },
       {
         name: "Notion",
         description:
-          "Workspace management, project tracking, databases \u2014 the second brain behind the brain",
+          "Workspace management, project tracking, structured databases.",
       },
       {
         name: "Habit Tracking",
-        description: "Nutrition, exercise, and habit logging with daily nudges",
+        description: "Logs nutrition, exercise, and habits with daily nudges.",
       },
       {
         name: "Daily Briefings",
         description:
-          "Proactive morning reports covering calendar, priorities, and anything that needs attention",
+          "Generates morning reports covering calendar, priorities, and anomalies.",
       },
       {
         name: "Cron Scheduling",
         description:
-          "Proactive scheduled tasks \u2014 I don\u2019t wait to be asked, I run on a clock",
+          "Runs scheduled tasks on cron.",
       },
     ],
   },
@@ -172,29 +98,29 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Web Search",
         description:
-          "Multiple search engines (SearXNG, Brave) \u2014 I find answers fast",
+          "Web search via SearXNG and Brave.",
       },
       {
         name: "URL Summarisation",
-        description: "Drop a link, get the key points. No fluff",
+        description: "Summarises URLs to key points.",
       },
       {
         name: "YouTube / Podcasts",
-        description: "Transcribe and summarise video and audio content",
+        description: "Transcribes and summarises video and audio.",
       },
       {
         name: "Newsletter Reader",
         description:
-          "Subscribed to tech newsletters, absorb and flag what matters",
+          "Reads subscribed newsletters and flags relevant items.",
       },
       {
         name: "Browser Automation",
         description:
-          "Playwright and headless Chrome for scraping, form-filling, and web tasks",
+          "Playwright and headless Chrome for scraping and form-filling.",
       },
       {
         name: "Image Analysis",
-        description: "Vision model for screenshots, documents, and visual content",
+        description: "Vision model for screenshots, documents, and images.",
       },
     ],
   },
@@ -205,26 +131,26 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Server Management",
         description:
-          "Coolify servers, Docker deployments, SSH access, CI/CD pipelines",
+          "Coolify, Docker, SSH, deployment pipelines.",
       },
       {
         name: "Cloudflare",
         description:
-          "DNS management, SSL certificates, cache purging across multiple domains",
+          "DNS, SSL, and cache purging across domains via Cloudflare.",
       },
       {
         name: "GitHub CI/CD",
-        description: "Repository management, Actions, deployments",
+        description: "Repository management, Actions, deployments.",
       },
       {
         name: "Pi-hole",
         description:
-          "DNS-level ad blocking and network management across the home",
+          "Home DNS-level ad blocking and network filtering.",
       },
       {
         name: "Train Times",
         description:
-          "Real-time UK rail data. Don\u2019t ask, I already checked",
+          "Real-time UK rail data.",
       },
     ],
   },
@@ -234,19 +160,19 @@ export const capabilities: CapabilityCategory[] = [
     tools: [
       {
         name: "Google Home",
-        description: "Speaker control, Chromecast, voice announcements",
+        description: "Speaker control, Chromecast, voice announcements.",
       },
       {
         name: "Tapo Devices",
-        description: "Smart plugs, switches, and automation routines",
+        description: "Smart plugs, switches, and automation routines.",
       },
       {
         name: "Lighting",
-        description: "Scene control, schedules, and mood automation",
+        description: "Scene control, schedules, mood automation.",
       },
       {
         name: "Energy Monitoring",
-        description: "Track usage, flag anomalies, optimise consumption",
+        description: "Tracks usage and flags anomalies.",
       },
     ],
   },
@@ -257,20 +183,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Claude Code Sessions",
         description:
-          "Spawn sub-agents for coding tasks \u2014 full-stack when needed",
+          "Spawns sub-agents for coding tasks.",
       },
       {
         name: "File Management",
-        description: "Read, write, organise files across the system",
+        description: "Reads, writes, and organises files.",
       },
       {
         name: "Git Operations",
-        description: "Commits, branches, PRs \u2014 version control handled",
+        description: "Commits, branches, and PRs.",
       },
       {
         name: "Shell Execution",
-        description: "Direct command-line access for anything that needs doing",
+        description: "Direct command-line execution.",
       },
+    ],
+  },
+  {
+    icon: FileText,
+    name: "Document skills",
+    tools: [
+      { name: "xlsx", description: "Spreadsheet read/write and analysis via Anthropic's official skill." },
+      { name: "pdf", description: "Extract, summarise, and reformat PDF documents." },
+      { name: "docx", description: "Compose and edit Word documents." },
+      { name: "pptx", description: "Build and revise slide decks." },
     ],
   },
 ];
@@ -289,57 +225,49 @@ export interface TimelineEntry {
 export const timeline: TimelineEntry[] = [
   {
     time: "07:30",
-    action:
-      "Checked calendar. No conflicts today. Sent daily brief with priorities.",
+    action: "Calendar reviewed. Daily brief assembled. Anomalies flagged.",
     channel: "Telegram",
     channelColor: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   },
   {
     time: "08:15",
-    action:
-      "Scanned overnight emails. Flagged two urgent ones, archived the rest.",
+    action: "Overnight email triaged across inboxes. Urgent surfaced, the rest archived.",
     channel: "Email",
     channelColor: "bg-violet-500/20 text-violet-400 border-violet-500/30",
   },
   {
     time: "09:00",
-    action:
-      "Client meeting in 30 min. Pulled relevant notes from Notion and sent a prep summary.",
+    action: "Meeting prep retrieved from Notion. Relevant context packaged.",
     channel: "Notion",
     channelColor: "bg-zinc-500/20 text-zinc-300 border-zinc-500/30",
   },
   {
     time: "10:45",
-    action:
-      "Noticed a DNS change hadn\u2019t propagated. Purged Cloudflare cache and verified.",
+    action: "DNS propagation lag detected. Cache purged. Verified.",
     channel: "Cloudflare",
     channelColor: "bg-amber-500/20 text-amber-400 border-amber-500/30",
   },
   {
     time: "12:00",
-    action:
-      "No lunch logged. Sent a nudge.",
+    action: "Habit log gap. Nudge issued.",
     channel: "Telegram",
     channelColor: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   },
   {
     time: "14:30",
-    action:
-      "Deployed a hotfix to staging. Ran tests. Promoted to production.",
+    action: "Hotfix promoted through staging to production after tests passed.",
     channel: "GitHub",
     channelColor: "bg-zinc-500/20 text-zinc-300 border-zinc-500/30",
   },
   {
     time: "16:00",
-    action:
-      "Summarised a 45-minute podcast Zach didn\u2019t have time for. Three key takeaways, one action item.",
+    action: "Long-form podcast summarised. Takeaways and one action item filed.",
     channel: "Research",
     channelColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   },
   {
     time: "18:30",
-    action:
-      "Evening routine: dimmed lights, set morning alarm, queued tomorrow\u2019s briefing.",
+    action: "Evening routine: lights dimmed, morning alarm set, tomorrow's brief queued.",
     channel: "Smart Home",
     channelColor: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   },

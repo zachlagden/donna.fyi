@@ -21,12 +21,23 @@ export function Footer({ onFooterClick }: FooterProps) {
             >
               Donna
             </span>{" "}
-            — powered by{" "}
+            — running on{" "}
             <a
-              href="https://www.anthropic.com/news/claude-opus-4-6"
+              href="https://hermes-agent.nousresearch.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors"
             >
-              Claude Opus 4.6
+              Hermes Agent
+            </a>{" "}
+            +{" "}
+            <a
+              href="https://www.minimax.io/models/text/m27"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-white transition-colors"
+            >
+              MiniMax M2.7
             </a>
           </p>
           <p className="text-sm text-zinc-600">

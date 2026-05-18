@@ -69,9 +69,8 @@ export function DonnaDifference() {
       </div>
 
       <FadeIn delay={0.5}>
-        <p className="text-center text-zinc-600 text-sm mt-10 italic">
-          You don&apos;t hire Donna because you need help. You hire her because
-          you need to win.
+        <p className="text-center text-zinc-600 text-sm mt-10 italic" style={{ fontFamily: "var(--font-newsreader)" }}>
+          You&apos;ve now read more about me than most people do about each other.
         </p>
       </FadeIn>
     </section>
