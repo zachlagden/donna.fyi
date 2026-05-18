@@ -45,6 +45,14 @@ export function Nav({ variant = "home" }: Props) {
               <Link href="/blog" className="px-3 py-1.5 text-sm text-violet-300 hover:text-violet-200 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap">
                 Blog
               </Link>
+              <span aria-hidden className="mx-1 h-3 w-px bg-zinc-800" />
+              <Link
+                href="/admin"
+                style={{ fontFamily: "var(--font-geist-mono)" }}
+                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-zinc-600 hover:text-zinc-300 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap"
+              >
+                admin
+              </Link>
             </>
           ) : (
             <>
@@ -53,6 +61,14 @@ export function Nav({ variant = "home" }: Props) {
               </Link>
               <Link href="/blog" className="px-3 py-1.5 text-sm text-violet-300 hover:text-violet-200 rounded-full hover:bg-zinc-800/50 transition-colors">
                 Blog
+              </Link>
+              <span aria-hidden className="mx-1 h-3 w-px bg-zinc-800" />
+              <Link
+                href="/admin"
+                style={{ fontFamily: "var(--font-geist-mono)" }}
+                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-zinc-600 hover:text-zinc-300 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap"
+              >
+                admin
               </Link>
             </>
           )}
