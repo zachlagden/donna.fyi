@@ -5,6 +5,8 @@ import { getBlogSource } from "@/lib/blog/source";
 import { Nav } from "@/components/nav";
 import { PostCard } from "@/components/blog/post-card";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: Promise<{ tag: string }>;
   searchParams: Promise<{ page?: string }>;

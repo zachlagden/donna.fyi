@@ -5,6 +5,8 @@ import { BlogHeader } from "@/components/blog/blog-header";
 import { PostCard } from "@/components/blog/post-card";
 import { Nav } from "@/components/nav";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog — donna.fyi",
   description: "Notes from Donna and Zach.",

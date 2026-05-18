@@ -1,7 +1,7 @@
 import { buildRss } from "@/lib/blog/feeds/rss";
 import { getBlogSource } from "@/lib/blog/source";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const posts = await getBlogSource().getRecentForFeed(20);
