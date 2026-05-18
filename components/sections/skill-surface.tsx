@@ -19,7 +19,7 @@ const WEIGHT_BY_CATEGORY: Record<string, Weight> = {
 export function SkillSurface() {
   return (
     <section id="skill-surface" className="relative max-w-4xl mx-auto px-6 py-32">
-      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-700 tracking-tight">05</span>
+      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-600 tracking-tight">05</span>
 
       <FadeIn mode="dossier">
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-zinc-100">
