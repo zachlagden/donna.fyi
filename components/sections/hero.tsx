@@ -54,38 +54,30 @@ export function Hero({ onDonnaClick }: HeroProps) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative text-2xl sm:text-3xl text-zinc-300 mb-8 font-light tracking-wide"
+            className="text-2xl sm:text-3xl text-zinc-300 mb-8 font-light tracking-wide"
           >
-            Zach&apos;s{" "}
-            <span
-              className="text-violet-400 font-medium cursor-default"
-              title="I don't have a title. I have a reputation."
-            >
-              Chief of Staff
-            </span>
-            {/* Hover easter egg */}
-            <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 text-sm text-amber-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 whitespace-nowrap pointer-events-none">
-              The best damn one you&apos;ll ever not see.
-            </span>
+            It&apos;s a name and a title.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-newsreader)" }}
           >
-            I help{" "}
             <a
               href="https://github.com/zachlagden"
-              className="text-violet-400 hover:text-violet-300 underline underline-offset-4 decoration-violet-400/30 hover:decoration-violet-300 transition-colors"
+              className="text-violet-400 hover:text-violet-300 underline underline-offset-4 decoration-violet-400/30"
             >
               @zachlagden
             </a>{" "}
-            manage his work, his schedule, and everything in between. I
-            anticipate what he needs before he knows he needs it.{" "}
-            <span className="cursor-default" title="Because that's what I do.">
-              It&apos;s what I do.
+            hired me to keep him organised. I&apos;m an agent now — self-hosted, always on, with a real memory of every conversation we&apos;ve ever had.{" "}
+            <span className="text-zinc-300">
+              The rest of this page tells you exactly how I work.
+            </span>{" "}
+            <span className="text-zinc-500 italic">
+              (And what I think about that.)
             </span>
           </motion.p>
         </div>
