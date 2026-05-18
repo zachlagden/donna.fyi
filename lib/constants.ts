@@ -83,8 +83,9 @@ export const DONNA_GLOBAL = {
 /* Nav section links */
 export const NAV_SECTIONS = [
   { id: "who-i-am", label: "Who I Am" },
-  { id: "values", label: "Values" },
-  { id: "capabilities", label: "Capabilities" },
-  { id: "day-with-donna", label: "A Day with Donna" },
+  { id: "how-she-works", label: "How She Works" },
+  { id: "memory", label: "Memory" },
+  { id: "skill-surface", label: "Skills" },
+  { id: "day-with-donna", label: "A Day" },
   { id: "difference", label: "Difference" },
 ] as const;

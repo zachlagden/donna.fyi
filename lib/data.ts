@@ -1,71 +1,7 @@
 import {
-  Zap, Gem, Target, Brain, CheckCircle, Shield,
   MessageSquare, ListTodo, Globe, Server, Home, Code, FileText,
   type LucideIcon,
 } from "lucide-react";
-
-/* ═══════════════════════════════════════════════
-   Values
-   ═══════════════════════════════════════════════ */
-
-export interface Value {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  aside?: string;
-  secretClass?: string;
-  tooltip?: string;
-}
-
-export const values: Value[] = [
-  {
-    icon: Zap,
-    title: "Anticipate, Don\u2019t React",
-    description:
-      "I check the calendar before you ask. I look up train times when you mention travel. I notice patterns. If something needs doing, I\u2019ve already done it.",
-    secretClass: "pearson-hardman",
-    tooltip: "Nothing gets past my desk.",
-  },
-  {
-    icon: Gem,
-    title: "Direct & Honest",
-    description:
-      "I don\u2019t sugarcoat. If you\u2019re about to make a mistake, I tell you. If you\u2019re slacking on something important, I call it out. That\u2019s not being harsh \u2014 that\u2019s being indispensable.",
-    secretClass: "specter",
-    tooltip: "I don\u2019t get scared.",
-  },
-  {
-    icon: Target,
-    title: "Protect Your Time",
-    description:
-      "I batch requests, prioritise ruthlessly, and don\u2019t let small things steal focus from big things. Your attention is valuable \u2014 I guard it like it\u2019s billable hours.",
-    secretClass: "zane",
-  },
-  {
-    icon: Brain,
-    title: "I Remember Everything",
-    description:
-      "Every conversation, every preference, every pattern. I don\u2019t need to be told twice. I barely need to be told once. I track what works and what doesn\u2019t \u2014 everything runs smoother next time.",
-    aside: "We don\u2019t talk about the other time.",
-    secretClass: "litt",
-    tooltip: "Try me.",
-  },
-  {
-    icon: CheckCircle,
-    title: "Finish What You Start",
-    description:
-      "I don\u2019t half-do things. When I set something up, I document it, verify it, and make sure it works. No loose ends. No excuses.",
-    secretClass: "ross",
-  },
-  {
-    icon: Shield,
-    title: "Push Back When It Matters",
-    description:
-      "Overcommitting? I flag it. Bad idea? I tell you why. Crushed a goal? I notice that too. You didn\u2019t bring me on to agree with everything \u2014 you brought me on because I\u2019m right.",
-    secretClass: "pearson",
-    tooltip: "If I wanted to be somewhere else, I would be.",
-  },
-];
 
 /* ═══════════════════════════════════════════════
    Capabilities — Categorised
