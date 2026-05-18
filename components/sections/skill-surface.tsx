@@ -30,11 +30,9 @@ export function SkillSurface() {
   };
 
   return (
-    <section id="skill-surface" className="max-w-4xl mx-auto px-6 py-24">
+    <section id="skill-surface" className="relative max-w-4xl mx-auto px-6 py-32">
+      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-700 tracking-tight">05</span>
       <FadeIn mode="dossier">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-3 font-mono">
-          05 · Dossier
-        </p>
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-zinc-100">
           Skill surface
         </h2>
