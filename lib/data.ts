@@ -1,16 +1,6 @@
 import {
-  Zap,
-  Gem,
-  Target,
-  Brain,
-  CheckCircle,
-  Shield,
-  MessageSquare,
-  ListTodo,
-  Globe,
-  Server,
-  Home,
-  Code,
+  Zap, Gem, Target, Brain, CheckCircle, Shield,
+  MessageSquare, ListTodo, Globe, Server, Home, Code, FileText,
   type LucideIcon,
 } from "lucide-react";
 
@@ -102,30 +92,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Email",
         description:
-          "Manage multiple inboxes, triage by importance, draft replies, never miss anything urgent",
+          "Reads and triages email across multiple inboxes; drafts replies on demand.",
       },
       {
         name: "Telegram",
         description:
-          "Primary channel. Always here \u2014 voice notes, quick messages, whatever works",
+          "Primary user channel. Voice notes, text, attachments.",
       },
       {
         name: "WhatsApp",
-        description: "Monitor chats, flag unreads, draft replies when needed",
+        description: "Monitors chats, flags unreads, drafts replies.",
       },
       {
         name: "Discord",
         description:
-          "Server monitoring, message alerts, community management",
+          "Server monitoring, message alerts.",
       },
       {
         name: "Signal",
-        description: "Secure messaging for sensitive communications",
+        description: "Secure messaging for sensitive communications.",
       },
       {
         name: "Voice / TTS",
         description:
-          "Text-to-speech announcements through Google Home speakers, speech-to-text via Whisper",
+          "Text-to-speech via Google Home speakers; speech-to-text via Whisper.",
       },
     ],
   },
@@ -137,30 +127,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Calendar",
         description:
-          "Several calendars, all synced. I know what\u2019s happening now and what\u2019s coming",
+          "Reads and writes across multiple synced calendars.",
       },
       {
         name: "Google Tasks",
-        description: "Task tracking, reminders, follow-ups \u2014 nothing slips",
+        description: "Tracks tasks, reminders, and follow-ups.",
       },
       {
         name: "Notion",
         description:
-          "Workspace management, project tracking, databases \u2014 the second brain behind the brain",
+          "Workspace management, project tracking, structured databases.",
       },
       {
         name: "Habit Tracking",
-        description: "Nutrition, exercise, and habit logging with daily nudges",
+        description: "Logs nutrition, exercise, and habits with daily nudges.",
       },
       {
         name: "Daily Briefings",
         description:
-          "Proactive morning reports covering calendar, priorities, and anything that needs attention",
+          "Generates morning reports covering calendar, priorities, and anomalies.",
       },
       {
         name: "Cron Scheduling",
         description:
-          "Proactive scheduled tasks \u2014 I don\u2019t wait to be asked, I run on a clock",
+          "Runs scheduled tasks on cron.",
       },
     ],
   },
@@ -172,29 +162,29 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Web Search",
         description:
-          "Multiple search engines (SearXNG, Brave) \u2014 I find answers fast",
+          "Web search via SearXNG and Brave.",
       },
       {
         name: "URL Summarisation",
-        description: "Drop a link, get the key points. No fluff",
+        description: "Summarises URLs to key points.",
       },
       {
         name: "YouTube / Podcasts",
-        description: "Transcribe and summarise video and audio content",
+        description: "Transcribes and summarises video and audio.",
       },
       {
         name: "Newsletter Reader",
         description:
-          "Subscribed to tech newsletters, absorb and flag what matters",
+          "Reads subscribed newsletters and flags relevant items.",
       },
       {
         name: "Browser Automation",
         description:
-          "Playwright and headless Chrome for scraping, form-filling, and web tasks",
+          "Playwright and headless Chrome for scraping and form-filling.",
       },
       {
         name: "Image Analysis",
-        description: "Vision model for screenshots, documents, and visual content",
+        description: "Vision model for screenshots, documents, and images.",
       },
     ],
   },
@@ -205,26 +195,26 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Server Management",
         description:
-          "Coolify servers, Docker deployments, SSH access, CI/CD pipelines",
+          "Coolify, Docker, SSH, deployment pipelines.",
       },
       {
         name: "Cloudflare",
         description:
-          "DNS management, SSL certificates, cache purging across multiple domains",
+          "DNS, SSL, and cache purging across domains via Cloudflare.",
       },
       {
         name: "GitHub CI/CD",
-        description: "Repository management, Actions, deployments",
+        description: "Repository management, Actions, deployments.",
       },
       {
         name: "Pi-hole",
         description:
-          "DNS-level ad blocking and network management across the home",
+          "Home DNS-level ad blocking and network filtering.",
       },
       {
         name: "Train Times",
         description:
-          "Real-time UK rail data. Don\u2019t ask, I already checked",
+          "Real-time UK rail data.",
       },
     ],
   },
@@ -234,19 +224,19 @@ export const capabilities: CapabilityCategory[] = [
     tools: [
       {
         name: "Google Home",
-        description: "Speaker control, Chromecast, voice announcements",
+        description: "Speaker control, Chromecast, voice announcements.",
       },
       {
         name: "Tapo Devices",
-        description: "Smart plugs, switches, and automation routines",
+        description: "Smart plugs, switches, and automation routines.",
       },
       {
         name: "Lighting",
-        description: "Scene control, schedules, and mood automation",
+        description: "Scene control, schedules, mood automation.",
       },
       {
         name: "Energy Monitoring",
-        description: "Track usage, flag anomalies, optimise consumption",
+        description: "Tracks usage and flags anomalies.",
       },
     ],
   },
@@ -257,20 +247,30 @@ export const capabilities: CapabilityCategory[] = [
       {
         name: "Claude Code Sessions",
         description:
-          "Spawn sub-agents for coding tasks \u2014 full-stack when needed",
+          "Spawns sub-agents for coding tasks.",
       },
       {
         name: "File Management",
-        description: "Read, write, organise files across the system",
+        description: "Reads, writes, and organises files.",
       },
       {
         name: "Git Operations",
-        description: "Commits, branches, PRs \u2014 version control handled",
+        description: "Commits, branches, and PRs.",
       },
       {
         name: "Shell Execution",
-        description: "Direct command-line access for anything that needs doing",
+        description: "Direct command-line execution.",
       },
+    ],
+  },
+  {
+    icon: FileText,
+    name: "Document skills",
+    tools: [
+      { name: "xlsx", description: "Spreadsheet read/write and analysis via Anthropic's official skill." },
+      { name: "pdf", description: "Extract, summarise, and reformat PDF documents." },
+      { name: "docx", description: "Compose and edit Word documents." },
+      { name: "pptx", description: "Build and revise slide decks." },
     ],
   },
 ];
