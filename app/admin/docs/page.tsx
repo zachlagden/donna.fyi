@@ -192,7 +192,7 @@ export default async function DocsPage() {
         className="mt-24 pt-8 border-t border-zinc-900 text-[11px] text-zinc-700"
         style={{ fontFamily: "var(--font-geist-mono)" }}
       >
-        rate limits · 600/min per key · 60/min per IP (no-op until Redis is wired)
+        rate limits · 600/min per key · 60/min per IP
       </footer>
     </main>
   );
