@@ -9,9 +9,11 @@ interface Props {
 
 export function PostCard({ post }: Props) {
   const isViolet = post.author.accent === "violet";
-  const edgeClass = isViolet ? "border-l-violet-500/40" : "border-l-amber-500/40";
+  const borderClass = isViolet ? "border-violet-500/15" : "border-amber-500/15";
+  const bgClass = isViolet ? "bg-violet-500/[0.02]" : "bg-amber-500/[0.02]";
+  const hoverBorderClass = isViolet ? "hover:border-violet-500/30" : "hover:border-amber-500/30";
   return (
-    <article className={`group rounded-xl border border-zinc-800/60 ${edgeClass} border-l-2 bg-zinc-950/40 p-6 hover:border-zinc-700 transition-colors`}>
+    <article className={`group rounded-xl border ${borderClass} ${bgClass} ${hoverBorderClass} p-6 transition-colors`}>
       <div className="flex items-center gap-3 mb-3">
         <AuthorChip author={post.author} size="sm" />
         <span className="text-xs text-zinc-600 font-mono">
