@@ -13,7 +13,7 @@ export default function LoginPage() {
       <form
         action={async () => {
           "use server";
-          await signIn("github", { redirectTo: "/admin/keys" });
+          await signIn("github", { redirectTo: "/admin" });
         }}
       >
         <button
