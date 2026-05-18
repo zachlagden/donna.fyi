@@ -9,8 +9,8 @@ import { WhoIAm } from "@/components/sections/who-i-am";
 import { HowSheWorks } from "@/components/sections/how-she-works";
 import { Memory } from "@/components/sections/memory";
 import { SkillSurface } from "@/components/sections/skill-surface";
-import { DayWithDonna } from "@/components/sections/day-with-donna";
-import { DonnaDifference } from "@/components/sections/donna-difference";
+import { InTheBackground } from "@/components/sections/in-the-background";
+import { HowIThink } from "@/components/sections/how-i-think";
 import { Footer } from "@/components/sections/footer";
 import { EasterEggs } from "@/components/easter-eggs";
 import { QuoteOverlay, DismissalPopup } from "@/components/quote-overlay";
@@ -64,8 +64,8 @@ export function DonnaPage() {
       <HowSheWorks />
       <Memory />
       <SkillSurface />
-      <DayWithDonna />
-      <DonnaDifference />
+      <InTheBackground />
+      <HowIThink />
       <Footer onFooterClick={handleFooterClick} />
     </div>
   );

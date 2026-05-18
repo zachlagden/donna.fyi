@@ -86,6 +86,6 @@ export const NAV_SECTIONS = [
   { id: "how-she-works", label: "How She Works" },
   { id: "memory", label: "Memory" },
   { id: "skill-surface", label: "Skills" },
-  { id: "day-with-donna", label: "A Day" },
-  { id: "difference", label: "Difference" },
+  { id: "in-the-background", label: "Background" },
+  { id: "how-i-think", label: "How I Think" },
 ] as const;
