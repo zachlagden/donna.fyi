@@ -1,12 +1,17 @@
-import { compile } from "@mdx-js/mdx";
+import { compile, run, type RunOptions } from "@mdx-js/mdx";
+import * as jsxRuntime from "react/jsx-runtime";
+import { createElement, type ReactElement, type ReactNode } from "react";
 import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeShiki from "@shikijs/rehype";
+
 import { rehypeValidateComponents, MdxValidationError } from "./validate";
+import { rehypeExtractToc } from "./toc";
 import type { TocEntry } from "@/lib/blog/types";
 import { readingTimeSeconds } from "@/lib/blog/reading-time";
-import { getHighlighter } from "./shiki";
+import { mdxComponents } from "@/components/mdx";
 
 export interface CompileResult {
   compiled: string;
@@ -25,20 +30,47 @@ export class MdxCompileError extends Error {
   }
 }
 
+const SHIKI_LANGS = [
+  "ts",
+  "tsx",
+  "js",
+  "jsx",
+  "sh",
+  "bash",
+  "json",
+  "yaml",
+  "sql",
+  "py",
+  "rust",
+  "md",
+  "diff",
+];
+
 export async function compileMdx(source: string): Promise<CompileResult> {
   const toc: TocEntry[] = [];
-  const highlighter = await getHighlighter();
 
+  let codeBody: string;
   try {
-    await compile(source, {
+    const compiled = await compile(source, {
+      outputFormat: "function-body",
+      development: false,
       remarkPlugins: [remarkGfm, remarkSmartypants],
       rehypePlugins: [
+        rehypeValidateComponents,
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "wrap" }],
-        rehypeValidateComponents,
+        () => rehypeExtractToc(toc),
+        [
+          rehypeShiki,
+          {
+            themes: { dark: "github-dark-dimmed" },
+            defaultColor: "dark",
+            langs: SHIKI_LANGS,
+          },
+        ],
       ],
-      outputFormat: "function-body",
     });
+    codeBody = String(compiled);
   } catch (err) {
     if (err instanceof MdxValidationError) {
       throw new MdxCompileError(err.message, { componentName: err.componentName });
@@ -50,65 +82,33 @@ export async function compileMdx(source: string): Promise<CompileResult> {
     });
   }
 
-  const html = await renderHtml(source, highlighter, toc);
+  type MdxModule = {
+    default: (props: { components?: typeof mdxComponents }) => ReactNode;
+  };
+
+  let mdxModule: MdxModule;
+  try {
+    const runOptions = {
+      ...(jsxRuntime as unknown as RunOptions),
+      baseUrl: "file:///compile.ts",
+    } as RunOptions;
+    mdxModule = (await run(codeBody, runOptions)) as MdxModule;
+  } catch (err) {
+    const e = err as { message?: string };
+    throw new MdxCompileError(e.message ?? "MDX evaluation failed");
+  }
+
+  const element = createElement(
+    mdxModule.default as (props: { components?: typeof mdxComponents }) => ReactElement,
+    { components: mdxComponents },
+  );
+
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const html = renderToStaticMarkup(element);
 
   return {
     compiled: html,
     toc,
     readingTimeSeconds: readingTimeSeconds(source.replace(/<[^>]*>/g, " ")),
   };
-}
-
-async function renderHtml(
-  source: string,
-  highlighter: Awaited<ReturnType<typeof getHighlighter>>,
-  toc: TocEntry[],
-): Promise<string> {
-  const { remark } = await import("remark");
-  const remarkRehype = (await import("remark-rehype")).default;
-  const rehypeStringify = (await import("rehype-stringify")).default;
-  const { visit } = await import("unist-util-visit");
-
-  const processor = remark()
-    .use(remarkGfm)
-    .use(remarkSmartypants)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings, { behavior: "wrap" })
-    .use(() => (tree: any) => {
-      visit(tree, "element", (node: any) => {
-        if (node.tagName !== "h2" && node.tagName !== "h3") return;
-        const id = (node.properties?.id as string) ?? "";
-        if (!id) return;
-        let text = "";
-        visit(node, "text", (t: any) => {
-          text += t.value as string;
-        });
-        toc.push({ id, text, level: node.tagName === "h2" ? 2 : 3 });
-      });
-    })
-    .use(() => (tree: any) => {
-      visit(tree, "element", (node: any, _i: any, parent: any) => {
-        if (node.tagName !== "code") return;
-        if (!parent || parent.tagName !== "pre") return;
-        const langClass = (node.properties?.className as string[] | undefined)?.find((c) =>
-          c.startsWith("language-"),
-        );
-        const lang = langClass ? langClass.replace("language-", "") : "text";
-        let code = "";
-        for (const c of node.children ?? []) {
-          if (c.type === "text") code += c.value as string;
-        }
-        const html = highlighter.codeToHtml(code, {
-          lang: lang as never,
-          theme: "github-dark-dimmed",
-        });
-        parent.tagName = "div";
-        parent.children = [{ type: "raw", value: html } as never];
-      });
-    })
-    .use(rehypeStringify, { allowDangerousHtml: true });
-
-  const file = await processor.process(source);
-  return String(file);
 }

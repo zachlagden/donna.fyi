@@ -9,5 +9,12 @@ describe("compileMdx", () => {
   it("highlights code blocks", async () => {
     const out = await compileMdx("```ts\nconst x: number = 1;\n```");
     expect(out.compiled).toContain("shiki");
+    expect(out.compiled).toContain("github-dark-dimmed");
+  });
+  it("expands DonnaSays callout", async () => {
+    const out = await compileMdx("<DonnaSays>Hi from Donna</DonnaSays>");
+    expect(out.compiled).toContain("Hi from Donna");
+    expect(out.compiled).toContain("border-violet-500/30");
+    expect(out.compiled).toContain("Donna says");
   });
 });

@@ -260,7 +260,7 @@ export function asAiPrompt(): string {
   lines.push("## MDX rules");
   lines.push("");
   lines.push(
-    "Post bodies are MDX, compiled at write time. Only the allowlisted MDX components are accepted; using any unlisted component fails with `invalid_mdx`. Allowed: `Code`, `Note`, `Warning`, `Tip`, `DonnaSays`, `ZachSays`, `Figure`, `Tweet`, `YouTube`, `Gist`, `Loom`. Standard markdown (`#`, `##`, `*`, fenced code, tables) is fine. v1 renders markdown only; allowlisted components are validated but not yet expanded in the rendered HTML."
+    "Post bodies are MDX, compiled at write time. Only the allowlisted MDX components are accepted; using any unlisted component fails with `invalid_mdx`. Allowed: `Code`, `Note`, `Warning`, `Tip`, `DonnaSays`, `ZachSays`, `Figure`, `Tweet`, `YouTube`, `Gist`, `Loom`. Standard markdown (`#`, `##`, `*`, fenced code, tables) is fine. Allowlisted MDX components ARE expanded into rendered HTML at write time. Use them freely."
   );
   lines.push("");
   lines.push("## Endpoints");
