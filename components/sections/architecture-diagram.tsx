@@ -267,7 +267,7 @@ export function ArchitectureDiagram() {
               semantic memory
             </text>
             <text x="500" y="510" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
-              deriver · pgvector · embeddings
+              deriver · halfvec(3072) · HNSW
             </text>
             <text x="500" y="530" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.5">
               every turn → observations + patterns
