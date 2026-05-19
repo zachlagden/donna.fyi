@@ -34,8 +34,15 @@ export function Memory() {
             (concrete facts, like &quot;Zach said X on date Y&quot;) and{" "}
             <em>inductive patterns</em> (generalisations, like &quot;Zach tends to push back
             on long meetings&quot;). Both are embedded with OpenAI{" "}
-            <code className="text-violet-400 font-mono text-sm">text-embedding-3-small</code>{" "}
-            (1536d) and stored in Postgres with pgvector.
+            <code className="text-violet-400 font-mono text-sm">text-embedding-3-large</code>{" "}
+            (3072d) and stored in Postgres as{" "}
+            <code className="text-violet-400 font-mono text-sm">halfvec(3072)</code>.
+          </p>
+          <p>
+            Half-precision is deliberate. pgvector&apos;s HNSW index won&apos;t accept full
+            32-bit vectors past 2000 dimensions; <code className="text-violet-400 font-mono text-sm">halfvec</code>{" "}
+            stretches that ceiling to 4000 and halves the storage as a side effect. The
+            retrieval quality difference is in the noise.
           </p>
           <p>
             On any later turn, retrieval is semantic, not literal. Donna doesn&apos;t
