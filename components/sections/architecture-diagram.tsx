@@ -8,42 +8,40 @@ const ACCENT = "#7da6ff";
 const ACCENT_DIM = "#3b5bd6";
 const GOLD = "#ffcc62";
 const NEUTRAL = "#6e7681";
-const LABEL = "#6e7681";
 
 const T = {
-  telegramIn: 0,
-  telegramToGateway: 0.2,
-  gateway: 0.7,
-  gatewayToModel: 1.1,
-  model: 1.5,
-  modelToGateway: 1.7,
-  gatewayToHoncho: 1.9,
-  honcho: 2.3,
-  honchoToGateway: 2.5,
-  gatewayToSkills: 2.7,
-  skills: 3.0,
+  boundary: 0,
+  telegram: 0.15,
+  telegramWires: 0.3,
+  gateway: 0.55,
+  fableWires: 0.95,
+  fable: 1.15,
+  honchoWires: 1.45,
+  honcho: 1.65,
+  skillsWire: 1.9,
+  skills: 2.05,
 };
 
 export function ArchitectureDiagram() {
   return (
-    <div className="w-full overflow-hidden rounded-sm border border-rule bg-panel p-4 sm:p-8 md:p-12 relative">
-      <div className="flex items-center justify-between mb-4 font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint">
-        <span>fig. 01 — architecture</span>
-        <span className="hidden sm:inline">one process · self-hosted</span>
+    <div className="w-full overflow-hidden rounded-sm border border-rule bg-panel relative">
+      <div className="px-4 py-2 border-b border-rule flex items-center justify-between font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint">
+        <span>fig. 01 — system architecture</span>
+        <span className="hidden sm:inline">one box · one external call</span>
       </div>
 
-      <div className="relative">
+      <div className="p-4 sm:p-8 md:p-10">
         <svg
-          viewBox="0 0 1000 620"
+          viewBox="0 0 1000 560"
           className="w-full h-auto"
           role="img"
-          aria-label="Donna architecture: Telegram is the user channel. The Hermes Gateway sits at the centre, exchanging reasoning requests with Claude Fable 5 above and observations with Honcho memory below, and dispatching tool calls to skills on the right."
+          aria-label="Donna architecture: a dashed boundary marks Zach's self-hosted box, containing the Hermes Gateway with Honcho memory and skills below it. Telegram connects from outside on the left as the user channel. Claude Fable 5 sits outside on the right, reached over the Anthropic API, the system's only external call."
           xmlns="http://www.w3.org/2000/svg"
           style={{ fontFamily: "var(--font-geist-mono)" }}
         >
           <defs>
             <marker
-              id="arrow-neutral"
+              id="arch-arrow-neutral"
               markerWidth="10"
               markerHeight="10"
               refX="9"
@@ -54,7 +52,7 @@ export function ArchitectureDiagram() {
               <polygon points="0 0, 10 3, 0 6" fill={NEUTRAL} />
             </marker>
             <marker
-              id="arrow-accent"
+              id="arch-arrow-accent"
               markerWidth="10"
               markerHeight="10"
               refX="9"
@@ -66,245 +64,245 @@ export function ArchitectureDiagram() {
             </marker>
           </defs>
 
-          <DiagramNode delay={T.telegramIn}>
+          <DiagramNode delay={T.boundary}>
             <rect
-              x="50"
-              y="278"
-              width="160"
+              x="210"
+              y="100"
+              width="560"
+              height="420"
+              rx="3"
+              fill="none"
+              stroke={GOLD}
+              strokeWidth="1"
+              strokeDasharray="6 6"
+              opacity="0.45"
+            />
+            <text x="228" y="128" fontSize="11" fill={GOLD} opacity="0.85">
+              zach&apos;s box · self-hosted
+            </text>
+          </DiagramNode>
+
+          <DiagramNode delay={T.telegram}>
+            <rect
+              x="30"
+              y="173"
+              width="140"
               height="64"
               rx="2"
               fill="none"
               stroke={NEUTRAL}
               strokeWidth="1.5"
             />
-            <text x="130" y="306" fontSize="13" fill={NEUTRAL} textAnchor="middle">
-              Telegram
+            <text x="100" y="201" fontSize="13" fill={NEUTRAL} textAnchor="middle">
+              telegram
             </text>
-            <text x="130" y="324" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+            <text x="100" y="220" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
               user channel
             </text>
           </DiagramNode>
 
           <DiagramLine
-            x1={210}
-            y1={310}
+            x1={170}
+            y1={192}
             x2={350}
-            y2={310}
+            y2={192}
             stroke={NEUTRAL}
-            markerEnd="url(#arrow-neutral)"
-            delay={T.telegramToGateway}
+            markerEnd="url(#arch-arrow-neutral)"
+            delay={T.telegramWires}
           />
-          <DiagramLabel x={280} y={302} dy={-6} fill={LABEL} delay={T.telegramToGateway + 0.3}>
-            user turn
+          <DiagramLine
+            x1={350}
+            y1={218}
+            x2={170}
+            y2={218}
+            stroke={NEUTRAL}
+            markerEnd="url(#arch-arrow-neutral)"
+            delay={T.telegramWires + 0.1}
+          />
+          <DiagramLabel x={260} y={182} fill={NEUTRAL} delay={T.telegramWires + 0.3}>
+            turns in
+          </DiagramLabel>
+          <DiagramLabel x={260} y={236} fill={NEUTRAL} delay={T.telegramWires + 0.35}>
+            replies out
           </DiagramLabel>
 
-          <DiagramNode delay={T.gateway} scaleIn originX={500} originY={310}>
+          <DiagramNode delay={T.gateway} scaleIn originX={490} originY={205}>
             <rect
-              x="358"
-              y="248"
-              width="284"
-              height="124"
+              x="356"
+              y="156"
+              width="268"
+              height="98"
               rx="2"
               fill="rgba(166,199,231,0.04)"
               stroke="none"
             />
             <rect
               x="350"
-              y="240"
-              width="300"
-              height="140"
+              y="150"
+              width="280"
+              height="110"
               rx="3"
               fill="none"
               stroke={POWDER}
               strokeWidth="2"
             />
-            <rect
-              x="356"
-              y="246"
-              width="288"
-              height="128"
-              rx="2"
-              fill="none"
-              stroke={POWDER}
-              strokeWidth="0.5"
-              opacity="0.4"
-            />
-            <text
-              x="500"
-              y="290"
-              fontSize="17"
-              fontWeight="700"
-              fill={FG}
-              textAnchor="middle"
-            >
-              Hermes Gateway
+            <text x="490" y="192" fontSize="16" fontWeight="700" fill={FG} textAnchor="middle">
+              hermes gateway
             </text>
-            <text x="500" y="320" fontSize="11" fill={NEUTRAL} textAnchor="middle">
+            <text x="490" y="216" fontSize="10.5" fill={NEUTRAL} textAnchor="middle">
               long-running agent runtime
             </text>
-            <text x="500" y="340" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
-              providers · skills · turns
-            </text>
-            <text x="500" y="360" fontSize="10" fill={GOLD} textAnchor="middle" opacity="0.8">
-              one process · self-hosted
+            <text x="490" y="236" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+              one process · turns, skills, providers
             </text>
           </DiagramNode>
 
           <DiagramLine
-            x1={488}
-            y1={240}
-            x2={488}
-            y2={140}
+            x1={630}
+            y1={192}
+            x2={810}
+            y2={192}
             stroke={ACCENT_DIM}
-            markerEnd="url(#arrow-accent)"
-            delay={T.gatewayToModel}
+            markerEnd="url(#arch-arrow-accent)"
+            delay={T.fableWires}
           />
-          <DiagramLabel
-            x={420}
-            y={195}
-            dy={-6}
-            textAnchor="end"
-            fill={LABEL}
-            delay={T.gatewayToModel + 0.3}
-          >
+          <DiagramLine
+            x1={810}
+            y1={218}
+            x2={630}
+            y2={218}
+            stroke={ACCENT_DIM}
+            markerEnd="url(#arch-arrow-accent)"
+            delay={T.fableWires + 0.1}
+          />
+          <DiagramLabel x={720} y={182} fill={NEUTRAL} delay={T.fableWires + 0.3}>
             reasoning request
           </DiagramLabel>
+          <DiagramLabel x={720} y={236} fill={NEUTRAL} delay={T.fableWires + 0.35}>
+            conclusion + tool calls
+          </DiagramLabel>
+          <DiagramLabel x={770} y={158} fill={GOLD} delay={T.fableWires + 0.45} fontSize={10}>
+            anthropic api · the one external call
+          </DiagramLabel>
 
-          <DiagramNode delay={T.model}>
+          <DiagramNode delay={T.fable}>
             <rect
-              x="380"
-              y="60"
-              width="240"
+              x="810"
+              y="170"
+              width="170"
               height="80"
               rx="2"
-              fill="none"
+              fill="rgba(125,166,255,0.05)"
               stroke={ACCENT}
               strokeWidth="1.5"
             />
-            <text x="500" y="92" fontSize="13" fill={ACCENT} textAnchor="middle" fontWeight="500">
-              Claude Fable 5
+            <text x="895" y="201" fontSize="13" fill={ACCENT} textAnchor="middle" fontWeight="500">
+              claude fable 5
             </text>
-            <text x="500" y="112" fontSize="10" fill={NEUTRAL} textAnchor="middle">
-              frontier reasoning · Mythos-class
+            <text x="895" y="221" fontSize="10" fill={NEUTRAL} textAnchor="middle">
+              frontier reasoning
             </text>
-            <text x="500" y="128" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
-              anthropic api · tool use
+            <text x="895" y="237" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+              mythos-class
             </text>
           </DiagramNode>
 
           <DiagramLine
-            x1={512}
-            y1={140}
-            x2={512}
-            y2={240}
+            x1={400}
+            y1={260}
+            x2={400}
+            y2={390}
             stroke={ACCENT_DIM}
-            markerEnd="url(#arrow-accent)"
-            delay={T.modelToGateway}
+            markerEnd="url(#arch-arrow-accent)"
+            delay={T.honchoWires}
           />
-          <DiagramLabel
-            x={580}
-            y={195}
-            dy={14}
-            textAnchor="start"
-            fill={LABEL}
-            delay={T.modelToGateway + 0.3}
-          >
-            tool calls
-          </DiagramLabel>
-
           <DiagramLine
-            x1={488}
-            y1={380}
-            x2={488}
-            y2={440}
+            x1={424}
+            y1={390}
+            x2={424}
+            y2={260}
             stroke={ACCENT_DIM}
-            markerEnd="url(#arrow-accent)"
-            delay={T.gatewayToHoncho}
+            markerEnd="url(#arch-arrow-accent)"
+            delay={T.honchoWires + 0.1}
           />
           <DiagramLabel
-            x={420}
-            y={415}
-            dy={-6}
+            x={388}
+            y={325}
             textAnchor="end"
-            fill={LABEL}
-            delay={T.gatewayToHoncho + 0.3}
+            fill={NEUTRAL}
+            delay={T.honchoWires + 0.3}
           >
-            observe + retrieve
+            observe
+          </DiagramLabel>
+          <DiagramLabel
+            x={436}
+            y={325}
+            textAnchor="start"
+            fill={NEUTRAL}
+            delay={T.honchoWires + 0.35}
+          >
+            retrieve
           </DiagramLabel>
 
           <DiagramNode delay={T.honcho}>
             <rect
-              x="360"
-              y="440"
-              width="280"
-              height="110"
+              x="260"
+              y="390"
+              width="240"
+              height="95"
               rx="2"
               fill="none"
               stroke={POWDER}
               strokeWidth="1.5"
             />
-            <text x="500" y="472" fontSize="13" fill={POWDER} textAnchor="middle" fontWeight="500">
-              Honcho
+            <text x="380" y="423" fontSize="13" fill={POWDER} textAnchor="middle" fontWeight="500">
+              honcho
             </text>
-            <text x="500" y="492" fontSize="10" fill={NEUTRAL} textAnchor="middle">
+            <text x="380" y="443" fontSize="10" fill={NEUTRAL} textAnchor="middle">
               semantic memory
             </text>
-            <text x="500" y="510" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
-              deriver · halfvec(3072) · HNSW
-            </text>
-            <text x="500" y="530" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.5">
-              every turn → observations + patterns
+            <text x="380" y="461" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+              postgres · halfvec(3072) · hnsw
             </text>
           </DiagramNode>
 
           <DiagramLine
-            x1={512}
-            y1={440}
-            x2={512}
-            y2={380}
-            stroke={ACCENT_DIM}
-            markerEnd="url(#arrow-accent)"
-            delay={T.honchoToGateway}
+            x1={600}
+            y1={260}
+            x2={600}
+            y2={390}
+            stroke={NEUTRAL}
+            markerEnd="url(#arch-arrow-neutral)"
+            delay={T.skillsWire}
           />
           <DiagramLabel
-            x={580}
-            y={415}
-            dy={14}
+            x={612}
+            y={325}
             textAnchor="start"
-            fill={LABEL}
-            delay={T.honchoToGateway + 0.3}
+            fill={NEUTRAL}
+            delay={T.skillsWire + 0.3}
           >
-            context + patterns
-          </DiagramLabel>
-
-          <DiagramLine
-            x1={650}
-            y1={310}
-            x2={790}
-            y2={310}
-            stroke={NEUTRAL}
-            markerEnd="url(#arrow-neutral)"
-            delay={T.gatewayToSkills}
-          />
-          <DiagramLabel x={720} y={302} dy={-6} fill={LABEL} delay={T.gatewayToSkills + 0.3}>
-            tool call
+            execute
           </DiagramLabel>
 
           <DiagramNode delay={T.skills}>
             <rect
-              x="790"
-              y="278"
-              width="160"
-              height="64"
+              x="540"
+              y="390"
+              width="190"
+              height="95"
               rx="2"
               fill="none"
               stroke={NEUTRAL}
               strokeWidth="1.5"
             />
-            <text x="870" y="306" fontSize="13" fill={NEUTRAL} textAnchor="middle">
-              Skills + tools
+            <text x="635" y="423" fontSize="13" fill={NEUTRAL} textAnchor="middle">
+              skills
             </text>
-            <text x="870" y="324" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+            <text x="635" y="443" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
+              installable capability
+            </text>
+            <text x="635" y="461" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.5">
               xlsx pdf docx · email · cron
             </text>
           </DiagramNode>

@@ -60,7 +60,9 @@ Brand mark: **"Donna."** — Newsreader with a cobalt full stop. The favicon is 
 
 - **Seams**: the dossier band opens with a 2px cobalt top rule and a mono strip — `// system dossier — donna.sys` / `hermes · fable 5 · honcho` + a 2×2 pixel cluster — and closes with `// end of dossier · transcript resumes below`.
 - **Gold comments**: inside the terminal, Donna's voice appears as `// …` mono asides in gold (`DonnaAside` in `components/sections/dossier.tsx`). Her personality leaking into the system output.
-- **Figures**: diagrams are terminal panels with a header strip `fig. NN — label`, square corners (`rounded-sm`), hairline borders. On paper pages they read as printed figures; captions beneath are serif italic.
+- **Figures**: diagrams are terminal panels with a header strip `fig. NN — label`, square corners (`rounded-sm`), hairline borders. On paper pages they read as printed figures; captions are serif italic, set as right-margin marginalia on `lg`.
+- **The machine in five states**: the How I Think figures draw one master schematic (telegram, gateway, Fable, Honcho, skills in fixed positions) five times, dimming everything except the active signal path per step, with mono gateway log lines in a separated strip (requests powder, Donna's message strings gold). The architecture figure (fig. 01) shares the node grammar and adds the dashed gold host boundary: "zach's box · self-hosted", with the Anthropic API as the marked single boundary crossing.
+- **Figure animation**: each figure self-triggers on viewport entry with internal offsets ≤0.5s; never chain cumulative delays across separately-scrolled figures.
 - **Textures**: `texture-grain` (paper, SVG noise at 5%) and `texture-grid` (terminal, 32px hairline grid). Both subtle.
 - **Pixel squares** instead of round dots for status/decoration (Honcho's bitmap DNA). The one allowed pulse is the `online` status square.
 
