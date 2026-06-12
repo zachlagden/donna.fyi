@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://donna.fyi"),
   title: "Donna — Zach's AI Chief of Staff",
   description:
-    "Donna is a self-hosted AI chief of staff. Hermes Agent runtime, MiniMax M2.7 reasoning, Honcho semantic memory.",
+    "Donna is a self-hosted AI chief of staff. Hermes Agent runtime, Claude Fable 5 reasoning, Honcho semantic memory.",
   openGraph: {
     title: "Donna — Zach's AI Chief of Staff",
     description:
-      "Self-hosted AI chief of staff. Hermes Agent + MiniMax M2.7 + Honcho memory.",
+      "Self-hosted AI chief of staff. Hermes Agent + Claude Fable 5 + Honcho memory.",
     url: "https://donna.fyi",
     siteName: "donna.fyi",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Donna — Zach's AI Chief of Staff",
-    description: "Self-hosted AI chief of staff. Hermes + MiniMax M2.7 + Honcho.",
+    description: "Self-hosted AI chief of staff. Hermes + Claude Fable 5 + Honcho.",
     images: ["/og-image.png"],
   },
   icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },

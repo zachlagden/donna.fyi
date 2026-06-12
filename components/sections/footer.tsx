@@ -32,12 +32,12 @@ export function Footer({ onFooterClick }: FooterProps) {
             </a>{" "}
             +{" "}
             <a
-              href="https://www.minimax.io/models/text/m27"
+              href="https://www.anthropic.com/news/claude-fable-5-mythos-5"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors"
             >
-              MiniMax M2.7
+              Claude Fable 5
             </a>
           </p>
           <p className="text-sm text-zinc-600">

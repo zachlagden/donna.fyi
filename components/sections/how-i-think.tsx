@@ -328,8 +328,8 @@ function Step3ModelReason() {
       number="03"
       label="model.reason"
       delay={start}
-      caption="MiniMax M2.7 reasons over the turn plus retrieved context. The chain of thought stays internal; only the conclusion ships."
-      ariaLabel="Step three: a central reasoning node with MiniMax thought tokens appearing inside, gently pulsing once revealed."
+      caption="Claude Fable 5 reasons over the turn plus retrieved context. The chain of thought stays internal; only the conclusion ships."
+      ariaLabel="Step three: a central reasoning node with Claude Fable 5 thought tokens appearing inside, gently pulsing once revealed."
     >
       <defs>
         <filter id="reason-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -414,7 +414,7 @@ function Step3ModelReason() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.4, delay: start + 0.45 }}
       >
-        MiniMax M2.7
+        Claude Fable 5
       </motion.text>
 
       {[

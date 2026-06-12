@@ -12,9 +12,9 @@ const T = {
   telegramIn: 0,
   telegramToGateway: 0.2,
   gateway: 0.7,
-  gatewayToMinimax: 1.1,
-  minimax: 1.5,
-  minimaxToGateway: 1.7,
+  gatewayToModel: 1.1,
+  model: 1.5,
+  modelToGateway: 1.7,
   gatewayToHoncho: 1.9,
   honcho: 2.3,
   honchoToGateway: 2.5,
@@ -35,7 +35,7 @@ export function ArchitectureDiagram() {
           viewBox="0 0 1000 620"
           className="w-full h-auto"
           role="img"
-          aria-label="Donna architecture: Telegram is the user channel. The Hermes Gateway sits at the centre, exchanging reasoning requests with MiniMax M2.7 above and observations with Honcho memory below, and dispatching tool calls to skills on the right."
+          aria-label="Donna architecture: Telegram is the user channel. The Hermes Gateway sits at the centre, exchanging reasoning requests with Claude Fable 5 above and observations with Honcho memory below, and dispatching tool calls to skills on the right."
           xmlns="http://www.w3.org/2000/svg"
           style={{ fontFamily: "var(--font-geist-mono)" }}
         >
@@ -162,7 +162,7 @@ export function ArchitectureDiagram() {
             </text>
           </DiagramNode>
 
-          {/* ── Gateway → MiniMax (up, request) ── */}
+          {/* ── Gateway → Model (up, request) ── */}
           <DiagramLine
             x1={488}
             y1={240}
@@ -170,7 +170,7 @@ export function ArchitectureDiagram() {
             y2={140}
             stroke={VIOLET_DIM}
             markerEnd="url(#arrow-violet)"
-            delay={T.gatewayToMinimax}
+            delay={T.gatewayToModel}
           />
           <DiagramLabel
             x={420}
@@ -178,13 +178,13 @@ export function ArchitectureDiagram() {
             dy={-6}
             textAnchor="end"
             fill={LABEL}
-            delay={T.gatewayToMinimax + 0.3}
+            delay={T.gatewayToModel + 0.3}
           >
             reasoning request
           </DiagramLabel>
 
-          {/* ── MiniMax node (top) ── */}
-          <DiagramNode delay={T.minimax}>
+          {/* ── Model node (top) ── */}
+          <DiagramNode delay={T.model}>
             <rect
               x="380"
               y="60"
@@ -196,17 +196,17 @@ export function ArchitectureDiagram() {
               strokeWidth="1.5"
             />
             <text x="500" y="92" fontSize="13" fill={VIOLET} textAnchor="middle" fontWeight="500">
-              MiniMax M2.7
+              Claude Fable 5
             </text>
             <text x="500" y="112" fontSize="10" fill={NEUTRAL} textAnchor="middle">
-              reasoning · ~204k context
+              reasoning · 1M context
             </text>
             <text x="500" y="128" fontSize="10" fill={NEUTRAL} textAnchor="middle" opacity="0.7">
-              anthropic-compat tool use
+              native tool use
             </text>
           </DiagramNode>
 
-          {/* ── MiniMax → Gateway (down, return tool calls) ── */}
+          {/* ── Model → Gateway (down, return tool calls) ── */}
           <DiagramLine
             x1={512}
             y1={140}
@@ -214,7 +214,7 @@ export function ArchitectureDiagram() {
             y2={240}
             stroke={VIOLET_DIM}
             markerEnd="url(#arrow-violet)"
-            delay={T.minimaxToGateway}
+            delay={T.modelToGateway}
           />
           <DiagramLabel
             x={580}
@@ -222,7 +222,7 @@ export function ArchitectureDiagram() {
             dy={14}
             textAnchor="start"
             fill={LABEL}
-            delay={T.minimaxToGateway + 0.3}
+            delay={T.modelToGateway + 0.3}
           >
             tool calls
           </DiagramLabel>
@@ -342,12 +342,12 @@ export function ArchitectureDiagram() {
           </a>
           <span className="text-zinc-700" aria-hidden>·</span>
           <a
-            href="https://api.minimax.io"
+            href="https://www.anthropic.com/news/claude-fable-5-mythos-5"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-zinc-300 transition-colors"
           >
-            api.minimax.io
+            anthropic.com
           </a>
           <span className="text-zinc-700" aria-hidden>·</span>
           <a

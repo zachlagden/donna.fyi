@@ -29,7 +29,7 @@ export function Memory() {
             . A purpose-built semantic memory layer for agents.
           </p>
           <p>
-            Every conversation turn gets passed through a deriver loop run by MiniMax M2.7.
+            Every conversation turn gets passed through a deriver loop run by Claude Haiku 4.5.
             The model produces two kinds of output: <em>deductive observations</em>{" "}
             (concrete facts, like &quot;Zach said X on date Y&quot;) and{" "}
             <em>inductive patterns</em> (generalisations, like &quot;Zach tends to push back

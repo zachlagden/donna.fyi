@@ -10,7 +10,7 @@ test("home page renders all sections", async ({ page }) => {
   await expect(page.locator("#in-the-background")).toBeVisible();
   await expect(page.locator("#how-i-think")).toBeVisible();
   await expect(page.getByText("Hermes Agent").first()).toBeVisible();
-  await expect(page.getByText("MiniMax M2.7").first()).toBeVisible();
+  await expect(page.getByText("Claude Fable 5").first()).toBeVisible();
 });
 
 test("home page does not reference Claude Opus 4.6 or OpenClaw", async ({ page }) => {

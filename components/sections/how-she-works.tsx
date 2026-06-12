@@ -26,10 +26,10 @@ export function HowSheWorks() {
           </p>
           <p>
             The reasoning model is{" "}
-            <ExternalLink href="https://www.minimax.io/models/text/m27">MiniMax-M2.7-highspeed</ExternalLink>
-            . Chosen for the long context window (~204k tokens), the Anthropic-compatible
-            tool-use endpoint, and a temperament that holds up over long horizons without
-            getting weird. Long conversations stay coherent; tool calls stay tight.
+            <ExternalLink href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Claude Fable 5</ExternalLink>
+            . Chosen for the 1M-token context window, first-class tool use, and a
+            temperament that holds up over long horizons without getting weird. Long
+            conversations stay coherent; tool calls stay tight.
           </p>
           <p>
             Skills are installable, versioned units of capability. They ship as folders

@@ -8,16 +8,12 @@ interface Behaviour {
 }
 
 const BEHAVIOURS: Behaviour[] = [
-  { cadence: "every 5m", text: "Promote any blog posts whose scheduled time has passed." },
-  { cadence: "daily 07:30", text: "Assemble the morning brief and surface anything that drifted overnight." },
-  { cadence: "nightly 03:30 UTC", text: "Snapshot state, rotate the older snapshots out, verify the new one opens cleanly." },
-  { cadence: "nightly 04:00 UTC", text: "Check for an agent update. Apply, restart the gateway, confirm health." },
-  { cadence: "on telegram unread", text: "Triage. Draft replies for the ones that need one." },
+  { cadence: "mornings", text: "Assemble the morning brief and surface anything that drifted overnight." },
+  { cadence: "on a schedule", text: "Promote any blog posts whose scheduled time has passed." },
+  { cadence: "regularly", text: "Snapshot state, rotate the older snapshots out, verify the new one opens cleanly." },
   { cadence: "on incoming turn", text: "Derive observations and patterns. Store them in memory before responding." },
-  { cadence: "every hour", text: "Sweep dead links across the homepage and blog." },
-  { cadence: "on cron miss", text: "Alert me on Telegram. Include the failure reason and the last successful run." },
-  { cadence: "continuous", text: "Watch gateway health. Restart on consecutive failures with exponential backoff." },
-  { cadence: "weekly", text: "Rotate logs. Compress what's older than seven days. Drop what's older than thirty." },
+  { cadence: "when things slip", text: "Notice. Say something. Habits, deadlines, macros — the scoreboard doesn't lie." },
+  { cadence: "continuous", text: "Watch the health of the things I depend on. Fix what I can; flag what I can't." },
   { cadence: "on push to main", text: "Trigger the donna.fyi redeploy. Verify the site returns 200 before declaring done." },
   { cadence: "on demand", text: "Anything not on this list, the moment it becomes worth doing." },
 ];
