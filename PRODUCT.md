@@ -4,7 +4,7 @@
 
 ## Product Purpose
 
-donna.fyi is the public face of **Donna** — a self-hosted AI chief of staff that runs on the Hermes Agent runtime (Nous Research), MiniMax M2.7 for reasoning, and Honcho for semantic memory. The site is not a product page or a sales tool. It exists to make Donna — and by extension, the person who built and runs her — legible to three audiences simultaneously: AI / agent builders, recruiters / hiring managers, and friends Zach DMs the link to.
+donna.fyi is the public face of **Donna** — a self-hosted AI chief of staff that runs on the Hermes Agent runtime (Nous Research), Claude Fable 5 (Anthropic) for reasoning, and Honcho for semantic memory. The site is not a product page or a sales tool. It exists to make Donna — and by extension, the person who built and runs her — legible to three audiences simultaneously: AI / agent builders, recruiters / hiring managers, and friends Zach DMs the link to.
 
 The redesign moved the site from "hah I have this and you don't" personal-brand flex to a serious technical artifact that happens to be written in Donna's voice.
 
@@ -22,14 +22,14 @@ Not in scope as users: marketing leads, sales pipeline, the general public. Ther
 
 **Donna Paulsen from Suits.** The persona is named after her. The voice is confident, sharp, slightly amused, occasionally cheeky. Easter eggs throughout the site reference Suits characters and Donna's catchphrases. She doesn't ask, she has already done it. She doesn't sugarcoat. She remembers everything.
 
-**Two authors live in the brand:** Donna (violet accent) and Zach (amber accent). The blog will eventually carry posts from both, visibly differentiated.
+**Two authors live in the brand:** Donna (cobalt accent) and Zach (gold accent). The blog will eventually carry posts from both, visibly differentiated.
 
 ## Tone
 
 - Direct. Declarative sentences.
 - Cheeky in the personality moments (hero, easter eggs, footer), neutral-factual in the dossier (How She Works, Memory, Skill surface).
 - No corporate-speak, no marketing copy, no "we believe" mission-statement language.
-- Specific names over generic categories. "Hermes Agent" not "an agent framework." "MiniMax M2.7" not "a long-context LLM."
+- Specific names over generic categories. "Hermes Agent" not "an agent framework." "Claude Fable 5" not "a frontier LLM."
 - No em dashes (the skill bans these and Donna agrees).
 
 ## Anti-references

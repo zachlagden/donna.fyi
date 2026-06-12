@@ -1,103 +1,97 @@
 # donna.fyi — Design System
 
-## Color strategy
+## The brand: Two-State ("Paper & Phosphor")
 
-**Committed.** One saturated color (violet) carries the brand identity. Amber appears as the second-author accent and a tertiary glow. Everything else is tinted-zinc neutrals.
+Donna's identity is synthesised from the three things she actually runs on, each of which brands itself as a printed or rendered document:
 
-### Tokens (OKLCH)
+- **Anthropic / Claude Fable 5** — ivory book paper, editorial serif, naturalist plates. The *mind*. → the Paper state.
+- **Hermes Agent (Nous Research)** — blueprint paper, electric cobalt ink, serif masthead + mono labels. The *runtime*. → the cobalt accent thread.
+- **Honcho** — charcoal terminal, powder blue, bitmap caps, pixel-grid ornaments. The *memory*. → the Terminal state.
 
-| Role | Token | Value | Notes |
-|---|---|---|---|
-| Surface base | `--background` | `oklch(0.145 0 0)` | Near-black, no chroma. Body bg. |
-| Surface raised | `--card` | `oklch(0.16 0.004 285)` | Slight violet tint |
-| Surface deepest | `--zinc-950` | tailwind | Used for cards inside cards |
-| Foreground | `--foreground` | `oklch(0.985 0 0)` | Near-white, no chroma |
-| Primary (Donna) | `--primary` | `oklch(0.627 0.265 303.9)` | Violet, full saturation |
-| Accent (Zach) | `--accent` | `oklch(0.769 0.188 70.08)` | Amber, second author |
-| Author Donna | `--color-author-donna` | `oklch(0.7 0.18 296)` | Chip/edge accent |
-| Author Donna soft | `--color-author-donna-soft` | `oklch(0.7 0.18 296 / 0.12)` | Background tint |
-| Author Zach | `--color-author-zach` | `oklch(0.79 0.16 70)` | Chip/edge accent |
-| Author Zach soft | `--color-author-zach-soft` | `oklch(0.79 0.16 70 / 0.12)` | Background tint |
-| Violet glow | `--color-violet-glow` | `oklch(0.541 0.281 293.009 / 0.15)` | Diffuse background glows |
-| Amber glow | `--color-amber-glow` | `oklch(0.769 0.188 70.08 / 0.1)` | Secondary glows |
+The site is **a document the system wrote about itself**. Donna's voice lives on paper; the system dossier renders in terminal; cobalt runs through both. The three-act page structure is literal: paper (hero, Who I Am) → terminal (the dossier) → paper (How I Think, sign-off).
 
-**Banned:** `#000`, `#fff`, cold default blue, gradient text used decoratively (the hero shimmer is the one exception — it's THE brand moment).
+**Banned:** violet/purple anything, gradient text, gradient backgrounds, glassmorphism, glow shadows, floating orbs, `rounded-full` pills, side-stripe borders, cold default blue-gray dark-tech (zinc-on-near-black).
 
-## Theme
+## Color
 
-**Dark.** Scene sentence: *Someone in their late twenties, on a 14-inch laptop screen in low ambient light, evaluating whether the person who built this is serious. They are not skimming. They are reading.*
+### Fixed palette (`@theme` tokens)
 
-Dark is required because (a) the persona — Donna — is a quietly powerful presence rather than a friendly one, (b) the architecture diagram demands a dark canvas to glow against, (c) reading at length wants reduced retinal load when the content is dense, (d) the audience overlaps significantly with people who use dark IDEs and tools all day.
+| Token | Value | Source |
+|---|---|---|
+| `paper` | `oklch(0.982 0.004 95)` ≈ #faf9f5 | Anthropic ivory |
+| `plate` | `oklch(0.915 0.045 88)` ≈ #f0e1c0 | Fable cream figure plates |
+| `terminal` | `oklch(0.218 0 0)` ≈ #1a1a1a | Honcho charcoal |
+| `panel` | `oklch(0.193 0 0)` | inset panels on terminal |
+| `cobalt` | `oklch(0.5 0.262 263)` ≈ #004dfd | Hermes blueprint ink (paper accent) |
+| `cobalt-bright` | `oklch(0.687 0.151 263)` ≈ #7da6ff | cobalt lifted for dark contrast (terminal accent) |
+| `powder` | `oklch(0.815 0.052 248)` ≈ #a6c7e7 | Honcho powder blue (terminal labels) |
+| `gold` | `oklch(0.862 0.124 85)` ≈ #ffcc62 | Hermes terminal highlight; Donna's asides + Zach's author colour on terminal |
+
+### Surface classes (contextual tokens)
+
+`.surface-paper` and `.surface-terminal` set CSS vars and `color`/`color-scheme` but **not background** — always pair with `bg-surface`. Inside either surface these utilities resolve contextually:
+
+`bg-surface` · `text-ink` · `text-ink-muted` · `text-ink-faint` · `text-accent-c` (cobalt on paper, cobalt-bright on terminal) · `border-rule` (hairline) · `border-rule-strong` · `divide-rule` · `text-author-donna` / `bg-author-donna-soft` · `text-author-zach` / `bg-author-zach-soft`
+
+Components written against these tokens work on both surfaces unchanged.
+
+### Authors
+
+Donna = **cobalt** (both states). Zach = **gold** on terminal, dark amber `oklch(0.555 0.115 75)` on paper. The old violet/amber pairing is retired; `Author.accent` in `lib/blog/types.ts` is `"cobalt" | "gold"`.
+
+### Surface assignment
+
+- Paper: homepage acts I and III, blog index, blog posts, tag pages, quote overlay, nav (the nav is always a paper artifact, even floating over terminal).
+- Terminal: the homepage dossier band, all code blocks and SVG figure panels (even inside paper pages), the dismissal popup, the entire admin.
 
 ## Typography
 
-Three faces. Each has a job.
+Three faces, unchanged from before, with sharper roles:
 
-| Face | Variable | Role |
-|---|---|---|
-| Geist Sans | `--font-geist-sans` | UI, nav, buttons, short labels, metadata |
-| Geist Mono | `--font-geist-mono` | Code, system labels, eyebrow tags, diagram labels, post bylines |
-| Newsreader | `--font-newsreader` | Long-form prose (voice sections, blog body), big serif display headers |
+| Face | Role |
+|---|---|
+| Newsreader | Voice. Display headings (`font-medium tracking-tight`), serif prose on paper, DonnaSays/ZachSays bodies, captions under figures. |
+| Geist Mono | The system. Eyebrows (`text-xs tracking-[0.24em] uppercase`), dossier headings (bold uppercase mono with a trailing cobalt `_` cursor), labels, bylines, cadences, code, seam strips. |
+| Geist Sans | UI chrome, dossier body prose (long mono prose is banned), admin. |
 
-### Scale
+Brand mark: **"Donna."** — Newsreader with a cobalt full stop. The favicon is an ivory tile with a serif D and cobalt period.
 
-Hierarchy through scale + weight contrast. Body line length 65-75ch (max-width container `~640px` for blog reader, `~3xl` for marketing sections).
+## Recurring devices
 
-- Display (Donna title, blog post H1): 5xl - 10rem, Newsreader semibold/black
-- Section H2: 4xl - 5xl, sans bold (currently) — **candidate for switch to Newsreader display weight in refresh**
-- Hero subtitle: 2xl - 3xl, sans light, tracking-wide
-- Body voice: 1.05-1.125rem, Newsreader 400, leading 1.6-1.75
-- Body dossier: 1.05rem, sans 400, leading 1.5
-- Eyebrow: xs uppercase, tracking-[0.2em], mono, zinc-500
-- Mono labels: xs-sm, mono, zinc-500
-
-**Banned:** flat scales, all-bold pages, headings smaller than body text.
+- **Seams**: the dossier band opens with a 2px cobalt top rule and a mono strip — `// system dossier — donna.sys` / `hermes · fable 5 · honcho` + a 2×2 pixel cluster — and closes with `// end of dossier · transcript resumes below`.
+- **Gold comments**: inside the terminal, Donna's voice appears as `// …` mono asides in gold (`DonnaAside` in `components/sections/dossier.tsx`). Her personality leaking into the system output.
+- **Figures**: diagrams are terminal panels with a header strip `fig. NN — label`, square corners (`rounded-sm`), hairline borders. On paper pages they read as printed figures; captions beneath are serif italic.
+- **Textures**: `texture-grain` (paper, SVG noise at 5%) and `texture-grid` (terminal, 32px hairline grid). Both subtle.
+- **Pixel squares** instead of round dots for status/decoration (Honcho's bitmap DNA). The one allowed pulse is the `online` status square.
 
 ## Motion
 
-Mode-aware via `mode: "voice" | "dossier" | "static"` prop on `FadeIn` + `Stagger*`.
+Mode-aware via `mode: "voice" | "dossier" | "static"` on `FadeIn` / `Stagger*` (unchanged):
 
-- **Voice mode** (sections 1, 2, 6, 7): y-translate 24px, opacity 0→1, duration 0.6s, ease `[0.16, 1, 0.3, 1]` (ease-out-quart), stagger 0.1s
-- **Dossier mode** (sections 3, 4, 5): no y-translate (only opacity), shorter duration 0.3s, tighter stagger 0.04s — sections feel like rendered documents, not animated reveals
-- **Static mode**: no animation. For below-the-fold safety / a11y respect
+- Voice: y-translate 24px, 0.6s, ease `[0.16, 1, 0.3, 1]`.
+- Dossier: opacity only, 0.3s, tight stagger — rendered documents, not reveals.
+- Diagram reveals (`DiagramReveal`) sequence the architecture figure; it remains the only choreographed animation in the dossier.
 
-### Functional motion
-
-The architecture diagram nodes reveal sequentially on scroll-in via `DiagramReveal` (motion.g with whileInView opacity). This is the only decorative animation in the dossier; it's earning its place because the diagram IS the substance.
-
-**Banned:** bounce / elastic easing, animating layout properties, decorative parallax on body content, infinite spinning anything that isn't a status dot.
+**Banned:** bounce/elastic easing, parallax (removed), shimmer, glow pulses, infinite animation that isn't the status square.
 
 ## Layout
 
-- **No nested cards.**
-- **Same-padding-every-section is monotony.** Voice sections breathe (py-24+), dossier sections can vary (py-20 with denser internals).
-- **Cards are not the default.** Use full borders, eyebrow text, leading numerals, or just a horizontal divider. Currently several sections use cards by reflex — flag for refinement.
-- **Container max-widths:** marketing sections `max-w-4xl`, blog index `max-w-3xl`, blog post reader `max-w-[640px]` with optional `xl:` right rail.
+- No nested cards; figures-in-prose instead of card grids.
+- Marketing sections `max-w-4xl`, hero masthead `max-w-5xl`, blog index `max-w-3xl`, post reader `max-w-[640px]`.
+- Hairline rules and mono eyebrows carry hierarchy; cards are the exception, not the default.
+- Corners: `rounded-sm` everywhere. Print artifacts and terminals do not have pill radii.
 
-## Components in use (high-level)
+## shadcn / admin
 
-- shadcn/ui primitives: Button, Card, Badge, Separator, Collapsible, Tooltip, Progress
-- Custom: Nav (mode-aware), Hero, section components, ArchitectureDiagram (SVG), AuthorChip, PostCard, Toc, PostMeta, EditedIndicator, BlogHeader
-- MDX components (allowlist): Code (Shiki), Note/Warning/Tip/DonnaSays/ZachSays callouts, Figure with lightbox, Tweet/YouTube/Gist/Loom embeds, typography overrides
+`:root` shadcn vars are tuned to the terminal palette (primary = cobalt-bright), so primitives restyle themselves. The admin wraps in `dark surface-terminal bg-surface texture-grid` and reads as a console: mono uppercase labels, square status indicators (cobalt-bright = live, gold = warning/revoked), `bg-panel` insets for data.
 
-## Easter eggs (part of the design)
+## Easter eggs (all preserved)
 
-- Triple-click "Donna" in hero → flashes a Suits quote
-- Type "donna" anywhere → flashes a quote
-- 5-click footer → "You just got Litt up!"
-- DevTools console: hidden message
-- Various `data-*` attributes referencing Suits characters
-- Hidden Donna note in footer (visible only when text-selected)
-- Konami code → quote
-- Multiple element-level tooltips on hover
+Triple-click "Donna", typing "donna", 5-click footer sign-off ("— D.R.P."), Konami code, console message, `window.__donna`, hidden data attributes, select-to-reveal footer note, Suits-character CSS classes (recoloured to the new palette), element tooltips. The quote overlay is now a paper card with a cobalt top rule; dismissals are terminal chips with gold `//` comments.
 
-These are intentional. They survive every refresh.
+## Anti-references
 
-## Anti-references / things to avoid
-
-- Stripe / Linear / Vercel cold-blue dark-tech look
-- "AI agent for X" landing page genre (gradient hero + 3-up grid + testimonial)
-- Side-stripe borders (banned by shared laws — currently used on the blog PostCard left edge — refactor target)
-- Gradient text as decoration (the hero shimmer is the one earned exception)
-- Glassmorphism as default (currently `.glass-card` exists but is being phased out as components are rebuilt)
-- Identical card grids (the Skill surface collapsibles are a candidate for differentiation)
+- The old donna.fyi (violet orbs, shimmer hero, glass cards) — the genre we left.
+- Any "AI agent" landing page: gradient hero, 3-up grid, testimonial carousel.
+- Stripe/Linear/Vercel cold-blue dark-tech.
+- Webflow templates, "Built with v0" energy.

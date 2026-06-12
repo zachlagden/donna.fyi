@@ -4,6 +4,7 @@ import { useState, useCallback, useRef } from "react";
 import { SUITS_QUOTES } from "@/lib/constants";
 
 import { Nav } from "@/components/nav";
+import { Dossier } from "@/components/sections/dossier";
 import { Hero } from "@/components/sections/hero";
 import { WhoIAm } from "@/components/sections/who-i-am";
 import { HowSheWorks } from "@/components/sections/how-she-works";
@@ -53,7 +54,7 @@ export function DonnaPage() {
   }, [flashQuote]);
 
   return (
-    <div className="min-h-screen bg-zinc-950 bg-grid-pattern">
+    <div className="min-h-screen surface-paper bg-surface">
       <Nav />
       <QuoteOverlay show={showQuote} quote={currentQuote} />
       <DismissalPopup show={showDismissal} text={dismissalText} />
@@ -61,10 +62,12 @@ export function DonnaPage() {
 
       <Hero onDonnaClick={handleDonnaClick} />
       <WhoIAm />
-      <HowSheWorks />
-      <Memory />
-      <SkillSurface />
-      <InTheBackground />
+      <Dossier>
+        <HowSheWorks />
+        <Memory />
+        <SkillSurface />
+        <InTheBackground />
+      </Dossier>
       <HowIThink />
       <Footer onFooterClick={handleFooterClick} />
     </div>

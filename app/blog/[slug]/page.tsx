@@ -35,7 +35,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen bg-zinc-950 bg-grid-pattern">
+    <div className="min-h-screen surface-paper bg-surface texture-grain">
       <Nav variant="blog" />
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-32 grid xl:grid-cols-[1fr_220px] gap-12">
         <article className="max-w-[640px] mx-auto xl:mx-0 w-full">
@@ -43,16 +43,16 @@ export default async function PostPage({ params }: Props) {
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <AuthorChip author={post.author} />
               {post.tags.map((t) => (
-                <a key={t.slug} href={`/blog/tag/${t.slug}`} className="text-xs font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-500 hover:text-zinc-300">
+                <a key={t.slug} href={`/blog/tag/${t.slug}`} className="text-xs font-mono px-2 py-0.5 rounded-sm border border-rule text-ink-faint hover:text-ink hover:border-rule-strong transition-colors">
                   {t.name}
                 </a>
               ))}
             </div>
-            <h1 className="text-5xl font-bold text-zinc-100 mb-3 leading-tight" style={{ fontFamily: "var(--font-newsreader)" }}>
+            <h1 className="text-5xl font-medium tracking-tight text-ink mb-3 leading-tight" style={{ fontFamily: "var(--font-newsreader)" }}>
               {post.title}
             </h1>
             {post.summary && (
-              <p className="text-xl text-zinc-400 mb-4" style={{ fontFamily: "var(--font-newsreader)" }}>
+              <p className="text-xl text-ink-muted mb-4" style={{ fontFamily: "var(--font-newsreader)" }}>
                 {post.summary}
               </p>
             )}
@@ -65,7 +65,7 @@ export default async function PostPage({ params }: Props) {
           </header>
 
           <div
-            className="prose-invert max-w-none"
+            className="max-w-none"
             dangerouslySetInnerHTML={{ __html: post.mdxCompiled }}
           />
         </article>

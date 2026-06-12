@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getBlogSource } from "@/lib/blog/source";
 import { AUTHORS } from "@/lib/blog/types";
+import { formatPublishDate } from "@/lib/blog/format";
 
 export const runtime = "nodejs";
 export const alt = "donna.fyi";
@@ -14,7 +15,8 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
   const title = post?.title ?? "donna.fyi";
   const rawTitle = title.length > 80 ? title.slice(0, 77) + "..." : title;
   const author = post?.author ?? AUTHORS.donna;
-  const accentColor = author.tag === "donna" ? "#a78bfa" : "#fbbf24";
+  const accentColor = author.tag === "donna" ? "#004dfd" : "#9a6a00";
+  const date = post ? formatPublishDate(post.publishedAt) : null;
 
   return new ImageResponse(
     (
@@ -26,25 +28,22 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#0a0a0c",
-          backgroundImage:
-            "radial-gradient(circle at 20% 0%, rgba(167, 139, 250, 0.12), transparent 50%), radial-gradient(circle at 100% 100%, rgba(251, 191, 36, 0.06), transparent 50%)",
+          background: "#faf9f5",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <div
             style={{
-              width: 10,
-              height: 10,
-              borderRadius: 9999,
-              background: accentColor,
+              width: 12,
+              height: 12,
+              background: "#004dfd",
             }}
           />
           <div
             style={{
               fontSize: 18,
               fontFamily: "monospace",
-              color: "#a1a1aa",
+              color: "#8a857a",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
             }}
@@ -53,18 +52,29 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            fontSize: 76,
-            fontWeight: 600,
-            lineHeight: 1.05,
-            color: "#fafafa",
-            letterSpacing: "-0.02em",
-            maxWidth: "85%",
-          }}
-        >
-          {rawTitle}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 72,
+              fontWeight: 500,
+              lineHeight: 1.08,
+              color: "#26231d",
+              fontFamily: "serif",
+              letterSpacing: "-0.02em",
+              maxWidth: "88%",
+            }}
+          >
+            {rawTitle}
+          </div>
+          <div
+            style={{
+              width: 120,
+              height: 5,
+              background: "#004dfd",
+              marginTop: 36,
+            }}
+          />
         </div>
 
         <div
@@ -72,47 +82,34 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
+            borderTop: "1px solid rgba(38, 35, 29, 0.18)",
+            paddingTop: 28,
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div
-              style={{
-                width: 4,
-                height: 36,
-                background: accentColor,
-                borderRadius: 2,
-              }}
-            />
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <div
-                style={{
-                  fontSize: 14,
-                  fontFamily: "monospace",
-                  color: "#71717a",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                author
-              </div>
-              <div
-                style={{
-                  fontSize: 28,
-                  color: "#e4e4e7",
-                  fontFamily: "serif",
-                  fontWeight: 500,
-                }}
-              >
-                {author.name}
-              </div>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              fontSize: 17,
+              fontFamily: "monospace",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "#57534a",
+            }}
+          >
+            <span>donna.fyi</span>
+            {date && <span style={{ color: "#8a857a" }}>·</span>}
+            {date && <span>{date}</span>}
+            <span style={{ color: "#8a857a" }}>·</span>
+            <span style={{ color: accentColor }}>{author.name}</span>
           </div>
 
           <div
             style={{
               fontSize: 14,
               fontFamily: "monospace",
-              color: "#52525b",
+              color: "#8a857a",
               letterSpacing: "0.18em",
             }}
           >

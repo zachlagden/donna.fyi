@@ -64,11 +64,11 @@ export const HIDDEN_DATA_ATTRS = {
 
 /* Console easter egg styling */
 export const CONSOLE_STYLE =
-  "color: #c4b5fd; font-size: 14px; font-weight: bold; text-shadow: 0 0 5px #7c3aed;";
+  "color: #7da6ff; font-size: 14px; font-weight: bold;";
 export const CONSOLE_STYLE_SMALL =
   "color: #78716c; font-size: 11px; font-style: italic;";
 export const CONSOLE_MESSAGE =
-  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   · donna.fyi | Hermes Agent + MiniMax M2.7 + Honcho";
+  "%c\uD83D\uDC8E I\u2019m Donna. If you\u2019re looking for bugs, you won\u2019t find any. I don\u2019t make mistakes.\n%c   · donna.fyi | Hermes Agent + Claude Fable 5 + Honcho";
 
 /* window.__donna object */
 export const DONNA_GLOBAL = {

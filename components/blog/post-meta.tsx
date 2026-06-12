@@ -10,7 +10,7 @@ interface Props {
 
 export function PostMeta({ publishedAt, readingTimeSeconds, revisionCount, lastEditedAt }: Props) {
   return (
-    <p className="text-sm text-zinc-500 font-mono">
+    <p className="text-sm text-ink-faint font-mono">
       {formatPublishDate(publishedAt)} · {formatReadingTime(readingTimeSeconds)}
       <EditedIndicator count={revisionCount} lastEditedAt={lastEditedAt} />
     </p>

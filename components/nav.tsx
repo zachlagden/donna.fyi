@@ -29,44 +29,44 @@ export function Nav({ variant = "home" }: Props) {
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-40"
     >
-      <div className="relative">
-        <div className="flex items-center gap-1 px-2 py-2 rounded-full bg-zinc-900/70 backdrop-blur-xl border border-zinc-800/50 shadow-lg shadow-black/20">
+      <div className="relative surface-paper bg-transparent">
+        <div className="flex items-center gap-1 px-2 py-1.5 rounded-sm bg-paper/90 backdrop-blur-md border border-rule-strong shadow-sm">
           {variant === "home" ? (
             <>
               {NAV_SECTIONS.map((s) => (
                 <button
                   key={s.id}
                   onClick={() => scrollTo(s.id)}
-                  className="px-3 py-1.5 text-sm text-zinc-400 hover:text-zinc-100 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap"
+                  className="px-3 py-1.5 text-sm text-ink-muted hover:text-ink rounded-sm hover:bg-ink/5 transition-colors whitespace-nowrap"
                 >
                   {s.label}
                 </button>
               ))}
-              <Link href="/blog" className="px-3 py-1.5 text-sm text-violet-300 hover:text-violet-200 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap">
+              <Link href="/blog" className="px-3 py-1.5 text-sm text-accent-c hover:text-ink rounded-sm hover:bg-ink/5 transition-colors whitespace-nowrap">
                 Blog
               </Link>
-              <span aria-hidden className="mx-1 h-3 w-px bg-zinc-800" />
+              <span aria-hidden className="mx-1 h-3 w-px bg-rule-strong" />
               <Link
                 href="/admin"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
-                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-zinc-600 hover:text-zinc-300 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap"
+                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-ink-faint hover:text-ink rounded-sm hover:bg-ink/5 transition-colors whitespace-nowrap"
               >
                 admin
               </Link>
             </>
           ) : (
             <>
-              <Link href="/" className="px-3 py-1.5 text-sm text-zinc-400 hover:text-zinc-100 rounded-full hover:bg-zinc-800/50 transition-colors">
+              <Link href="/" className="px-3 py-1.5 text-sm text-ink-muted hover:text-ink rounded-sm hover:bg-ink/5 transition-colors">
                 donna.fyi
               </Link>
-              <Link href="/blog" className="px-3 py-1.5 text-sm text-violet-300 hover:text-violet-200 rounded-full hover:bg-zinc-800/50 transition-colors">
+              <Link href="/blog" className="px-3 py-1.5 text-sm text-accent-c hover:text-ink rounded-sm hover:bg-ink/5 transition-colors">
                 Blog
               </Link>
-              <span aria-hidden className="mx-1 h-3 w-px bg-zinc-800" />
+              <span aria-hidden className="mx-1 h-3 w-px bg-rule-strong" />
               <Link
                 href="/admin"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
-                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-zinc-600 hover:text-zinc-300 rounded-full hover:bg-zinc-800/50 transition-colors whitespace-nowrap"
+                className="px-2 py-1.5 text-[11px] tracking-wide uppercase text-ink-faint hover:text-ink rounded-sm hover:bg-ink/5 transition-colors whitespace-nowrap"
               >
                 admin
               </Link>
@@ -76,7 +76,7 @@ export function Nav({ variant = "home" }: Props) {
 
         {variant === "home" && (
           <motion.div
-            className="absolute -bottom-1 left-4 right-4 h-0.5 bg-violet-500/50 rounded-full origin-left"
+            className="absolute -bottom-px left-0 right-0 h-0.5 bg-accent-c origin-left"
             style={{ scaleX: scrollYProgress }}
           />
         )}

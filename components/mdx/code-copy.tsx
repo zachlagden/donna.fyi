@@ -14,7 +14,7 @@ export function CopyButton({ code }: { code: string }) {
     <button
       type="button"
       onClick={onCopy}
-      className="text-xs text-zinc-500 hover:text-zinc-200 transition-colors inline-flex items-center gap-1"
+      className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint hover:text-ink transition-colors inline-flex items-center gap-1"
     >
       {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
       {copied ? "Copied" : "Copy"}

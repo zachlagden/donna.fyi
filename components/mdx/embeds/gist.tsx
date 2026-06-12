@@ -2,7 +2,7 @@ interface Props { id: string; }
 
 export function Gist({ id }: Props) {
   return (
-    <div className="my-6 rounded-lg overflow-hidden border border-zinc-800/60">
+    <div className="my-6 rounded-sm overflow-hidden border border-rule">
       <iframe
         src={`https://gist.github.com/${id}.pibb`}
         title="GitHub Gist"

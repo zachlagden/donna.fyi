@@ -4,14 +4,14 @@ import { AuthorChip } from "@/components/blog/author-chip";
 import { AUTHORS } from "@/lib/blog/types";
 
 describe("AuthorChip", () => {
-  it("renders Donna in violet", () => {
+  it("renders Donna in cobalt", () => {
     const { container, getByText } = render(<AuthorChip author={AUTHORS.donna} />);
     expect(getByText("Donna")).toBeInTheDocument();
-    expect(container.firstChild).toHaveClass("text-violet-300");
+    expect(container.firstChild).toHaveClass("text-author-donna");
   });
-  it("renders Zach in amber", () => {
+  it("renders Zach in gold", () => {
     const { container, getByText } = render(<AuthorChip author={AUTHORS.zach} />);
     expect(getByText("Zach")).toBeInTheDocument();
-    expect(container.firstChild).toHaveClass("text-amber-300");
+    expect(container.firstChild).toHaveClass("text-author-zach");
   });
 });

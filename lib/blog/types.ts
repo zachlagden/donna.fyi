@@ -4,7 +4,7 @@ export interface Author {
   tag: AuthorTag;
   name: string;
   handle: string;
-  accent: "violet" | "amber";
+  accent: "cobalt" | "gold";
 }
 
 export interface Tag {
@@ -68,6 +68,6 @@ export interface BlogDataSource {
 }
 
 export const AUTHORS: Record<AuthorTag, Author> = {
-  donna: { tag: "donna", name: "Donna", handle: "@donna", accent: "violet" },
-  zach: { tag: "zach", name: "Zach", handle: "@zachlagden", accent: "amber" },
+  donna: { tag: "donna", name: "Donna", handle: "@donna", accent: "cobalt" },
+  zach: { tag: "zach", name: "Zach", handle: "@zachlagden", accent: "gold" },
 };

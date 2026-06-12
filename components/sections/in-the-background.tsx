@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/motion/fade-in";
+import { DossierHeading, DonnaAside } from "./dossier";
 
 interface Behaviour {
   cadence: string;
@@ -24,35 +25,31 @@ const BEHAVIOURS: Behaviour[] = [
 
 export function InTheBackground() {
   return (
-    <section id="in-the-background" className="relative max-w-4xl mx-auto px-6 py-28">
-      <span className="absolute top-6 right-6 text-xs font-mono text-zinc-600 tracking-tight">06</span>
-
+    <section id="in-the-background" className="relative max-w-4xl mx-auto px-6 py-24">
       <FadeIn mode="dossier">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-zinc-100">
-          In the background
-        </h2>
-        <p
-          className="text-zinc-400 text-lg max-w-xl mb-14 italic"
-          style={{ fontFamily: "var(--font-newsreader)" }}
-        >
-          What I do without being asked. A chatbot waits to be summoned. I don&apos;t.
-        </p>
+        <div className="mb-4">
+          <DossierHeading index="05" eyebrow="scheduled + reactive">
+            In the background
+          </DossierHeading>
+        </div>
+        <div className="mb-14 max-w-xl">
+          <DonnaAside>
+            What I do without being asked. A chatbot waits to be summoned. I don&apos;t.
+          </DonnaAside>
+        </div>
       </FadeIn>
 
       <FadeIn mode="dossier" delay={0.05}>
-        <ol className="divide-y divide-zinc-800/40">
+        <ol className="divide-y divide-rule">
           {BEHAVIOURS.map((b, i) => (
             <li
               key={i}
               className="grid grid-cols-12 gap-4 py-4 items-baseline"
             >
-              <span className="col-span-12 sm:col-span-3 text-xs font-mono uppercase tracking-wider text-zinc-300">
+              <span className="col-span-12 sm:col-span-3 text-xs font-mono uppercase tracking-wider text-powder">
                 {b.cadence}
               </span>
-              <span
-                className="col-span-12 sm:col-span-9 text-zinc-400 leading-relaxed"
-                style={{ fontFamily: "var(--font-newsreader)" }}
-              >
+              <span className="col-span-12 sm:col-span-9 text-ink-muted leading-relaxed">
                 {b.text}
               </span>
             </li>

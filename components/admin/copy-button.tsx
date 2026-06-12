@@ -24,19 +24,18 @@ export function CopyButton({ value, label = "Copy", size = "sm", variant = "ghos
   }
 
   const base =
-    "inline-flex items-center gap-1.5 rounded-md font-mono uppercase tracking-wider transition-all duration-200 active:scale-[0.97]";
+    "inline-flex items-center gap-1.5 rounded-sm font-mono uppercase tracking-wider transition-all duration-200 active:scale-[0.97] cursor-pointer";
   const sizing = size === "sm" ? "text-[10px] px-2 py-1" : "text-xs px-3 py-1.5";
   const styles =
     variant === "filled"
-      ? "bg-violet-500/15 border border-violet-500/30 text-violet-200 hover:bg-violet-500/25 hover:border-violet-500/50"
-      : "bg-zinc-900/50 border border-zinc-800/60 text-zinc-500 hover:text-zinc-200 hover:border-zinc-700";
+      ? "bg-cobalt-bright/15 border border-cobalt-bright/40 text-cobalt-bright hover:bg-cobalt-bright/25 hover:border-cobalt-bright/60"
+      : "bg-panel border border-rule text-ink-muted hover:text-ink hover:border-rule-strong";
 
   return (
     <button
       type="button"
       onClick={onClick}
       className={`${base} ${sizing} ${styles}`}
-      style={{ fontFamily: "var(--font-geist-mono)" }}
       aria-label={copied ? "Copied" : label}
     >
       {copied ? (

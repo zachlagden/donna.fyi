@@ -6,7 +6,7 @@ describe("compileMdx validation", () => {
     const out = await compileMdx("# hi\n\n<Note>Body</Note>");
     expect(out.compiled).toContain("hi");
     expect(out.compiled).toContain("Body");
-    expect(out.compiled).toContain("border-sky-500/30");
+    expect(out.compiled).toContain("border-rule");
     expect(out.compiled).toContain("Note");
   });
   it("rejects unknown component", async () => {

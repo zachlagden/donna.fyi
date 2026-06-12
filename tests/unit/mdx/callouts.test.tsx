@@ -7,13 +7,13 @@ describe("Callouts", () => {
     const { getByText } = render(<Note>hi</Note>);
     expect(getByText("hi")).toBeInTheDocument();
   });
-  it("DonnaSays renders with violet accent regardless of context", () => {
+  it("DonnaSays renders with the Donna author accent", () => {
     const { container } = render(<DonnaSays>hi</DonnaSays>);
-    expect(container.firstChild).toHaveClass("border-violet-500/30");
+    expect(container.firstChild).toHaveClass("bg-author-donna-soft");
   });
-  it("ZachSays renders with amber accent", () => {
+  it("ZachSays renders with the Zach author accent", () => {
     const { container } = render(<ZachSays>hi</ZachSays>);
-    expect(container.firstChild).toHaveClass("border-amber-500/30");
+    expect(container.firstChild).toHaveClass("bg-author-zach-soft");
   });
   it("Warning + Tip render", () => {
     expect(render(<Warning>w</Warning>).getByText("w")).toBeInTheDocument();

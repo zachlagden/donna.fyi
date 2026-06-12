@@ -12,15 +12,21 @@ export function QuoteOverlay({ show, quote }: QuoteOverlayProps) {
     <AnimatePresence>
       {show && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
+          exit={{ opacity: 0, scale: 0.97 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
         >
-          <div className="px-8 py-6 rounded-2xl bg-zinc-900/95 border border-violet-500/50 shadow-2xl shadow-violet-500/20 backdrop-blur-sm">
-            <p className="text-2xl sm:text-3xl font-bold text-amber-400 text-center italic">
+          <div className="surface-paper bg-surface px-10 py-8 rounded-sm border border-rule-strong border-t-2 border-t-cobalt shadow-2xl shadow-black/20 max-w-lg mx-6">
+            <p
+              className="text-2xl sm:text-3xl text-ink text-center italic leading-snug"
+              style={{ fontFamily: "var(--font-newsreader)" }}
+            >
               &ldquo;{quote}&rdquo;
+            </p>
+            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-faint text-center mt-4">
+              — donna
             </p>
           </div>
         </motion.div>
@@ -45,8 +51,11 @@ export function DismissalPopup({ show, text }: DismissalPopupProps) {
           transition={{ duration: 0.2 }}
           className="fixed bottom-8 right-8 z-50 pointer-events-none"
         >
-          <div className="px-6 py-3 rounded-xl bg-zinc-900/90 border border-amber-500/30 shadow-lg backdrop-blur-sm">
-            <p className="text-sm text-amber-400/80 italic">{text}</p>
+          <div className="surface-terminal bg-surface px-5 py-3 rounded-sm border border-rule shadow-lg">
+            <p className="font-mono text-sm text-gold/90">
+              <span className="select-none">{"// "}</span>
+              {text}
+            </p>
           </div>
         </motion.div>
       )}

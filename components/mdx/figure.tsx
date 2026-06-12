@@ -19,13 +19,13 @@ export function Figure({ src, alt, caption, width = 1600, height = 900 }: Props)
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="block w-full rounded-lg overflow-hidden border border-zinc-800/60 cursor-zoom-in"
+        className="block w-full rounded-sm overflow-hidden border border-rule cursor-zoom-in"
         aria-label="Open image at full size"
       >
         <Image src={src} alt={alt} width={width} height={height} className="w-full h-auto" />
       </button>
       {caption && (
-        <figcaption className="text-sm text-zinc-500 italic text-center mt-3" style={{ fontFamily: "var(--font-newsreader)" }}>
+        <figcaption className="text-sm text-ink-faint italic text-center mt-3" style={{ fontFamily: "var(--font-newsreader)" }}>
           {caption}
         </figcaption>
       )}
@@ -38,7 +38,7 @@ export function Figure({ src, alt, caption, width = 1600, height = 900 }: Props)
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setOpen(false); }}
-            className="absolute top-6 right-6 text-zinc-400 hover:text-white"
+            className="absolute top-6 right-6 text-white/60 hover:text-white"
             aria-label="Close"
           >
             <X className="w-6 h-6" />

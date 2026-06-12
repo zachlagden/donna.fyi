@@ -23,12 +23,12 @@ export default async function BlogIndex({ searchParams }: Props) {
   const result = await source.listPosts({ page, perPage: 10 });
 
   return (
-    <div className="min-h-screen bg-zinc-950 bg-grid-pattern">
+    <div className="min-h-screen surface-paper bg-surface texture-grain">
       <Nav variant="blog" />
       <BlogHeader />
       <main className="max-w-3xl mx-auto px-6 pb-32">
         {result.posts.length === 0 ? (
-          <p className="text-zinc-500 italic" style={{ fontFamily: "var(--font-newsreader)" }}>Nothing here yet.</p>
+          <p className="text-ink-muted italic" style={{ fontFamily: "var(--font-newsreader)" }}>Nothing here yet.</p>
         ) : (
           <div className="space-y-5">
             {result.posts.map((p) => (
@@ -37,13 +37,13 @@ export default async function BlogIndex({ searchParams }: Props) {
           </div>
         )}
         {result.totalPages > 1 && (
-          <nav className="mt-12 flex items-center justify-between text-sm font-mono text-zinc-500">
+          <nav className="mt-12 flex items-center justify-between text-sm font-mono text-ink-faint">
             {page > 1 ? (
-              <Link href={`/blog?page=${page - 1}`} className="hover:text-zinc-200">← Newer</Link>
+              <Link href={`/blog?page=${page - 1}`} className="hover:text-ink">← Newer</Link>
             ) : <span />}
             <span>{String(page).padStart(2, "0")} / {String(result.totalPages).padStart(2, "0")}</span>
             {page < result.totalPages ? (
-              <Link href={`/blog?page=${page + 1}`} className="hover:text-zinc-200">Older →</Link>
+              <Link href={`/blog?page=${page + 1}`} className="hover:text-ink">Older →</Link>
             ) : <span />}
           </nav>
         )}

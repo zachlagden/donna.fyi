@@ -43,8 +43,8 @@ export function MintKeyForm() {
   }
 
   return (
-    <div className="rounded-lg border border-zinc-800/60 p-5 space-y-3">
-      <p className="text-sm text-zinc-300 font-semibold">Mint a new key</p>
+    <div className="rounded-sm border border-rule p-5 space-y-3">
+      <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint">Mint a new key</p>
       <form onSubmit={onSubmit} className="space-y-3">
         <input
           name="name"
@@ -52,13 +52,13 @@ export function MintKeyForm() {
           placeholder="Donna, Hetzner box"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full bg-zinc-950 border border-zinc-800 rounded px-3 py-2 text-zinc-100 placeholder-zinc-600"
+          className="w-full bg-panel border border-rule rounded-sm px-3 py-2 text-ink placeholder:text-ink-faint focus:border-rule-strong focus:outline-none"
         />
         <select
           name="author_tag"
           value={authorTag}
           onChange={(e) => setAuthorTag(e.target.value as "donna" | "zach")}
-          className="w-full bg-zinc-950 border border-zinc-800 rounded px-3 py-2 text-zinc-100"
+          className="w-full bg-panel border border-rule rounded-sm px-3 py-2 text-ink focus:border-rule-strong focus:outline-none"
         >
           <option value="donna">Donna</option>
           <option value="zach">Zach</option>
@@ -66,22 +66,22 @@ export function MintKeyForm() {
         <button
           type="submit"
           disabled={isPending || !name.trim()}
-          className="px-4 py-2 rounded bg-violet-500/20 border border-violet-500/40 text-violet-200 text-sm hover:bg-violet-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-2 rounded-sm bg-cobalt-bright/15 border border-cobalt-bright/40 text-cobalt-bright text-sm hover:bg-cobalt-bright/25 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
         >
           {isPending ? "Minting…" : "Mint"}
         </button>
       </form>
       {error && (
-        <div className="rounded-md border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-300">
+        <div className="rounded-sm border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs text-destructive">
           Mint failed: {error}
         </div>
       )}
       {result && (
-        <div className="rounded-md border border-violet-500/30 bg-violet-500/5 px-3 py-3 space-y-2">
-          <p className="text-xs text-violet-200 font-semibold">
+        <div className="rounded-sm border border-gold/40 bg-gold/5 px-3 py-3 space-y-2">
+          <p className="font-mono text-xs text-gold">
             Copy this now. It will not be shown again.
           </p>
-          <code className="block break-all font-mono text-xs text-zinc-100 bg-zinc-950 border border-zinc-800 rounded px-2 py-1.5">
+          <code className="block break-all font-mono text-xs text-ink bg-panel border border-rule rounded-sm px-2 py-1.5">
             {result.plaintext_key}
           </code>
         </div>

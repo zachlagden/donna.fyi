@@ -31,34 +31,43 @@ export default async function KeysPage() {
 
   return (
     <main className="max-w-3xl mx-auto px-6 pt-32 pb-32">
-      <h1 className="text-3xl font-bold text-zinc-100 mb-2" style={{ fontFamily: "var(--font-newsreader)" }}>
+      <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint mb-3">
+        donna.fyi · admin · keys
+      </p>
+      <h1 className="text-3xl font-semibold tracking-tight text-ink mb-2">
         API keys
       </h1>
-      <p className="text-zinc-500 mb-10 text-sm">The only &ldquo;admin&rdquo; surface. Mint, list, revoke.</p>
+      <p className="text-ink-muted mb-10 text-sm">The only &ldquo;admin&rdquo; surface. Mint, list, revoke.</p>
 
       <MintKeyForm />
 
       <ul className="space-y-2 mt-10">
         {keys.map((k) => (
-          <li key={k.id} className="rounded-lg border border-zinc-800/60 p-4 flex items-center justify-between">
-            <div>
-              <p className="text-sm text-zinc-200 font-medium">{k.name}</p>
-              <p className="text-xs text-zinc-500 font-mono mt-1">
-                {k.key_prefix}&hellip; &middot; {k.author_tag} &middot; {new Date(k.created_at).toLocaleDateString()}
-                {k.revoked_at && <span className="text-amber-400 ml-2">revoked</span>}
-              </p>
+          <li key={k.id} className="rounded-sm border border-rule p-4 flex items-center justify-between">
+            <div className="flex items-start gap-3">
+              <span
+                aria-hidden
+                className={`mt-1.5 h-2 w-2 shrink-0 ${k.revoked_at ? "bg-gold/70" : "bg-cobalt-bright"}`}
+              />
+              <div>
+                <p className="text-sm text-ink font-medium">{k.name}</p>
+                <p className="text-xs text-ink-muted font-mono mt-1">
+                  {k.key_prefix}&hellip; &middot; {k.author_tag} &middot; {new Date(k.created_at).toLocaleDateString()}
+                  {k.revoked_at && <span className="text-gold ml-2">revoked</span>}
+                </p>
+              </div>
             </div>
             {!k.revoked_at && (
               <form action={revokeAction}>
                 <input type="hidden" name="id" value={k.id} />
-                <button type="submit" className="text-xs text-zinc-400 hover:text-red-300 transition-colors">Revoke</button>
+                <button type="submit" className="font-mono text-xs uppercase tracking-wider text-ink-muted hover:text-destructive transition-colors cursor-pointer">Revoke</button>
               </form>
             )}
           </li>
         ))}
       </ul>
 
-      <p className="text-xs text-zinc-600 mt-12 italic">
+      <p className="font-mono text-xs text-gold/80 mt-12">
         Plaintext keys are shown exactly once when minted. Copy them immediately, there is no recovery.
       </p>
     </main>

@@ -26,14 +26,14 @@ export default async function TagPage({ params, searchParams }: Props) {
   if (result.totalCount === 0) notFound();
 
   return (
-    <div className="min-h-screen bg-zinc-950 bg-grid-pattern">
+    <div className="min-h-screen surface-paper bg-surface texture-grain">
       <Nav variant="blog" />
       <header className="max-w-3xl mx-auto px-6 pt-32 pb-12">
-        <Link href="/blog" className="text-sm text-zinc-500 hover:text-zinc-200 font-mono">← Blog</Link>
-        <h1 className="text-4xl font-bold text-zinc-100 mt-4" style={{ fontFamily: "var(--font-newsreader)" }}>
+        <Link href="/blog" className="text-sm text-ink-faint hover:text-ink font-mono">← Blog</Link>
+        <h1 className="text-4xl font-medium tracking-tight text-ink mt-4" style={{ fontFamily: "var(--font-newsreader)" }}>
           #{tag}
         </h1>
-        <p className="text-zinc-500 text-sm mt-2 font-mono">{result.totalCount} posts</p>
+        <p className="text-ink-faint text-sm mt-2 font-mono">{result.totalCount} posts</p>
       </header>
       <main className="max-w-3xl mx-auto px-6 pb-32">
         <div className="space-y-5">

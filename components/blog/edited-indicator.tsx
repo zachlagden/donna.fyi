@@ -10,7 +10,7 @@ export function EditedIndicator({ count, lastEditedAt }: Props) {
   const fmt = new Intl.DateTimeFormat("en-GB", { year: "numeric", month: "short", day: "numeric" });
   return (
     <span
-      className="text-xs text-zinc-500 font-mono cursor-help"
+      className="text-xs text-ink-faint font-mono cursor-help"
       title={`Last edited ${fmt.format(lastEditedAt)}`}
     >
       · edited

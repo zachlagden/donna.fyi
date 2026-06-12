@@ -14,7 +14,7 @@ describe("compileMdx", () => {
   it("expands DonnaSays callout", async () => {
     const out = await compileMdx("<DonnaSays>Hi from Donna</DonnaSays>");
     expect(out.compiled).toContain("Hi from Donna");
-    expect(out.compiled).toContain("border-violet-500/30");
+    expect(out.compiled).toContain("bg-author-donna-soft");
     expect(out.compiled).toContain("Donna says");
   });
 });

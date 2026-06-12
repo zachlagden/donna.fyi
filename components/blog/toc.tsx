@@ -32,16 +32,16 @@ export function Toc({ entries }: Props) {
 
   return (
     <nav className="hidden xl:block sticky top-24 self-start w-56 text-sm">
-      <p className="text-xs uppercase tracking-[0.2em] text-zinc-600 mb-3 font-mono">Contents</p>
-      <ul className="space-y-1.5 border-l border-zinc-800">
+      <p className="font-mono text-xs tracking-[0.2em] uppercase text-ink-faint mb-3">Contents</p>
+      <ul className="space-y-1.5 border-l border-rule">
         {entries.map((e) => (
           <li key={e.id} className={e.level === 3 ? "pl-6" : "pl-3"}>
             <a
               href={`#${e.id}`}
               className={`block py-0.5 transition-colors -ml-px border-l ${
                 active === e.id
-                  ? "border-violet-400 text-violet-300"
-                  : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  ? "border-accent-c text-accent-c"
+                  : "border-transparent text-ink-faint hover:text-ink"
               }`}
             >
               {e.text}
