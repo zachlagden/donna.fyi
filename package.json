@@ -2,13 +2,6 @@
   "name": "donna.fyi",
   "version": "1.0.0",
   "private": true,
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "@node-rs/argon2"
-    ]
-  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
